@@ -1,15 +1,16 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Node {
 
     private final String type;
     private final String name;
-    private final Edge[] edges;
+    private final ArrayList<Edge> edges;
 
     public Node(String type, String name) {
         this.type = type;
         this.name = name;
-        this.edges = new Edge[10];
+        this.edges = new ArrayList<Edge>();
     }
 
     public String getType() {
@@ -20,7 +21,7 @@ public class Node {
         return name;
     }
 
-    public Edge[] getEd() {
+    public ArrayList<Edge> getEd() {
         return edges;
     }
 
@@ -29,41 +30,47 @@ public class Node {
         return "Node{" +
                 "type='" + type + '\'' +
                 ", name='" + name + '\'' +
-                ", edges=" + Arrays.toString(edges) +
+                ", edges=" + edges +
                 '}';
     }
 
     public void addEdge(Edge edge){
-        for (int i = 0; i < this.edges.length; i++){
-            if (this.edges[i] == null){
-                this.edges[i] = edge;
-                break;
-            }
-        }
+        this.edges.add(edge);
     }
 
-    public Node[] neighbor1distance(){
-        Node[] neighbor = new Node[10];
-        int j = 0;
-        for (int i = 0; i < this.edges.length; i++){
-            if (this.edges[i] != null){
-                neighbor[j] = edges[i].getArriveNode();
+    public ArrayList<Node> neighborOneDistance(Node origin) {
+        ArrayList<Node> neighbor = new ArrayList<Node>();
+        for (int i = 0; i < this.edges.size(); i++){
+            if (this.edges.get(i) != null && this.edges.get(i).getArriveNode() != origin){
+                neighbor.add(this.edges.get(i).getArriveNode());
             }
         }
         return neighbor;
     }
 
-    public Node[] neighbor2distance(){
-        Node[] neighbor1 = this.neighbor1distance();
-        Node[] neighbor2 = new Node[10];
-        for (int i = 0; i < neighbor1.length; i++){
-            int k = 0;
-            for (int j = 0; i < this.edges.length; i++){
-                if (this.edges[j] != null){
-                    neighbor2[k] = edges[j].getArriveNode();
+    public ArrayList<Node> neighborTwoDistance() {
+        ArrayList<Node> neighbor = new ArrayList<Node>();
+        for (int i = 0; i < this.edges.size(); i++){
+            if (this.edges.get(i) != null){
+                neighbor.add(this.edges.get(i).getArriveNode());
+                neighbor.addAll(this.edges.get(i).getArriveNode().neighborOneDistance(this));
+            }
+        }
+        return neighbor;
+    }
+
+    /*
+    public ArrayList<Node> neighborNDistance(Node origin,int n) {
+        ArrayList<Node> neighbor = new ArrayList<Node>();
+        for (int i = 0; i < this.edges.size(); i++){
+            if (this.edges.get(i) != null){
+                neighbor.add(this.edges.get(i).getArriveNode());
+                if (this.edges.get(i) != null && this.edges.get(i).getArriveNode() != origin){
+                neighbor.addAll(this.edges.get(i).getArriveNode().neighborNDistance(this,n-1));
                 }
             }
         }
-        return neighbor2;
+        return neighbor;
     }
+    */
 }

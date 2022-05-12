@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Test {
     public static void main(String[] args) {
 
@@ -14,14 +16,16 @@ public class Test {
 
         paris.addEdge(ParisLyon);
         lyon.addEdge(LyonMarseille);
-        Node[] tab = paris.neighbor1distance();
-        for (int i = 0; i<tab.length; i++){
-            System.out.println(tab[i]);
-        }
+        lyon.addEdge(LyonParis);
+        ArrayList<Node> tab = paris.neighborOneDistance(paris);
+
+        for (int i = 0; i<tab.size(); i++){
+            System.out.println(tab.get(i).getName());
+        }/*
         System.out.println("/////////////////////////////////////////");
-        Node[] tab2 = paris.neighbor2distance();
+        Node[] tab2 = paris.neighborTwoDistance();
         for (int i = 0; i<tab2.length; i++){
             System.out.println(tab2[i]);
-        }
+        }*/
     }
 }
