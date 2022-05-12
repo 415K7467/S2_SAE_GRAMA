@@ -1,10 +1,12 @@
+package features;
+
 public class Edge {
 
     private final String type;
-    private final int size;
+    private final float size;
     private final Node arriveNode;
 
-    public Edge(String type, int size, Node arriveNode) {
+    public Edge(String type, float size, Node arriveNode) {
         this.type = type;
         this.size = size;
         this.arriveNode = arriveNode;
@@ -14,7 +16,7 @@ public class Edge {
         return type;
     }
 
-    public int getSize() {
+    public float getSize() {
         return size;
     }
 
