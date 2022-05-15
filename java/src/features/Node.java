@@ -6,7 +6,7 @@ public class Node {
 
     private final String type;
     private final String name;
-    private final ArrayList<Edge> edges;
+    private ArrayList<Edge> edges;
 
     public Node(String type, String name) {
         this.type = type;
@@ -26,13 +26,22 @@ public class Node {
         return edges;
     }
 
+
     @Override
     public String toString() {
         return "Node{" +
                 "type='" + type + '\'' +
                 ", name='" + name + '\'' +
-                ", edges=" + edges +
+                ", edges=" + getType()+','+getName()+
                 '}';
+    }
+
+    public ArrayList<Edge> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(ArrayList<Edge> edges) {
+        this.edges = edges;
     }
 
     public void addEdge(Edge edge){
