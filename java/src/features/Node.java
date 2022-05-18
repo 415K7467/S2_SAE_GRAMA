@@ -56,39 +56,20 @@ public class Node {
         this.edges.add(edge);
     }
 
-    public ArrayList<Node> neighborOneDistance(Node origin) {
+    public ArrayList<Node> neighbor(int distance) {     // distance coresond to the nomber of edges betweens two nodes
         ArrayList<Node> neighbor = new ArrayList<Node>();
         for (int i = 0; i < this.edges.size(); i++){
-            if (this.edges.get(i) != null && this.edges.get(i).getArriveNode() != origin){
-                neighbor.add(this.edges.get(i).getArriveNode());
-            }
-        }
-        return neighbor;
-    }
-
-    public ArrayList<Node> neighborTwoDistance() {
-        ArrayList<Node> neighbor = new ArrayList<Node>();
-        for (int i = 0; i < this.edges.size(); i++){
-            if (this.edges.get(i) != null){
-                neighbor.add(this.edges.get(i).getArriveNode());
-                neighbor.addAll(this.edges.get(i).getArriveNode().neighborOneDistance(this));
-            }
-        }
-        return neighbor;
-    }
-
-    /*
-    public ArrayList<Node> neighborNDistance(Node origin,int n) {
-        ArrayList<Node> neighbor = new ArrayList<Node>();
-        for (int i = 0; i < this.edges.size(); i++){
-            if (this.edges.get(i) != null){
-                neighbor.add(this.edges.get(i).getArriveNode());
-                if (this.edges.get(i) != null && this.edges.get(i).getArriveNode() != origin){
-                neighbor.addAll(this.edges.get(i).getArriveNode().neighborNDistance(this,n-1));
+            Node neighbor1 = this.edges.get(i).getArriveNode();
+            neighbor.add(neighbor1);
+            if(distance >1){
+                ArrayList neighbors = neighbor1.neighbor(distance-1);   //put the list of neighbor of neighbor1 into neighbors
+                for (int k = 0; k < neighbors.size(); k++){
+                    if(neighbors.get(k)!=this && !neighbor.contains(neighbors.get(k))) {  //if the neighbor is not itself and not in neighbor
+                        neighbor.add((Node) neighbors.get(k));
+                    }
                 }
             }
         }
         return neighbor;
     }
-    */
 }
