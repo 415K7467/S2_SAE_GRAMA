@@ -1,24 +1,24 @@
 package features;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Nodes {
-    private ArrayList<Node> nodes;
+    private HashMap nodes;
 
     public Nodes() {
-        this.nodes = new ArrayList<>();
+        this.nodes = new HashMap<String, Node>();
     }
 
-    public ArrayList<Node> getNodes() {
+    public HashMap getNodes() {
         return nodes;
     }
 
-    public void setNodes(ArrayList<Node> nodes) {
+    public void setNodes(HashMap nodes) {
         this.nodes = nodes;
     }
 
     public void addNode(Node node) {
-        nodes.add(node);
+        nodes.put(node.getName(), node);
     }
 
     @Override
@@ -28,16 +28,11 @@ public class Nodes {
                 '}';
     }
 
-    public Node get(int index) {
-        return nodes.get(index);
+    public int size() {
+        return nodes.size();
     }
 
-    public Node searchNode(String name) {
-        for (Node node : nodes) {
-            if (node.getName().equals(name)) {
-                return node;
-            }
-        }
-        return null;
+    public Node getNode(String name) {
+        return (Node) nodes.get(name);
     }
 }

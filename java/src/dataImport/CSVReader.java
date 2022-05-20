@@ -9,13 +9,14 @@ import features.*;
 public class CSVReader {
     public static Nodes allNodes=new Nodes();
 
-    public static void extractData() throws Exception {
+    public static Nodes extractData() throws Exception {
         Scanner scanner;
         scanner = scannerCSVOfTheBigin(null);
         extractNodes(scanner);
         scanner = scannerCSVOfTheBigin(scanner);
         extractEdges(scanner);
         scanner.close();
+        return allNodes;
     }
 
     public static void extractNodes(Scanner scanner) throws Exception {
@@ -37,8 +38,8 @@ public class CSVReader {
                 scanner.next();
                 thisNode = scanner.next();
                 scanner.useDelimiter(";;");
-                ArrayList<Edge> edges = extraction(scanner.next());           //create ArrayList of edges for this node
-                allNodes.searchNode(thisNode).setEdges(edges);                //add edges to the node
+                ArrayList<Edge> edges = extraction(scanner.next());             //create ArrayList of edges for this node
+                allNodes.getNode(thisNode).setEdges(edges);                     //add edges to the node
             }
         }
         catch (Exception e){
@@ -56,7 +57,7 @@ public class CSVReader {
             float weight = Float.parseFloat(scanner.next());
             scanner.next();
             scanner.next();
-            Node arrivalNode = allNodes.searchNode(scanner.next());
+            Node arrivalNode = allNodes.getNode(scanner.next());
             Edge edge = new Edge(style,weight,arrivalNode);
             edges.add(edge);
         }

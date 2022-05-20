@@ -27,7 +27,14 @@ public class Dijkstra {
     }
 
     //Dijkstra's algorithm
-    private ArrayList<Node> dijkstra() {
+    public ArrayList<Node> dijkstra() {
+        System.out.println(this.nodeList.size());
+        int i =0;
+        for (Object key: nodeList.getNodes().keySet()){
+            System.out.println(nodeList.getNode((String) key));
+            i++;
+       }
+        System.out.println(i);
         return null;
     }
 }
