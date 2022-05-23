@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7263ea1d-0db2-4b45-a134-e6d9e4a64526" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/java/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/SAE-JAVA.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/HCI/jswing/Window.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/dataImport/CSV.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/dataImport/CSVReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/dataImport/NodeDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Dijkstra.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Edge.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Node.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Nodes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/HCI/jswing/Window.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/dataImport/CSV.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/dataImport/CSVReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Dijkstra.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Edge.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Node.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Nodes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Test.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="29YVrH4algZC6lYXyDoZDz1t4fy" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="S2_SAE_GRAMA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="S2_SAE_GRAMA" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7263ea1d-0db2-4b45-a134-e6d9e4a64526" name="Changes" comment="" />
+      <created>1653290203410</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1653290203410</updated>
+      <workItem from="1653290205146" duration="171000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,6 +1,7 @@
 package features;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Node {
 
@@ -72,4 +73,50 @@ public class Node {
         }
         return neighbor;
     }
+
+    public void compareNodes(Node node1,int distance, String type) { //if type='V' compare with neigbors city, if type='R' compare with neighbor restaurant if type='L' compare with neighbor loisir
+        ArrayList<Node> neighbors1 = node1.neighbor(distance);
+        ArrayList<Node> neighbors2 = this.neighbor(distance);
+        int numberNeighbors1 =numberOfType(neighbors1, type);
+        int numberNeighbors2 =numberOfType(neighbors2, type);
+        String nameType = nomtype(type);
+
+
+        System.out.println(node1+":"+numberNeighbors1);
+        System.out.println(this+":"+numberNeighbors2);
+        if (numberNeighbors1<numberNeighbors2){
+            System.out.println(node1+"a plus de"+nameType+"a"+distance+"distances, que "+this);
+        }
+        else if (numberNeighbors1>numberNeighbors2){
+            System.out.println(node1+"a moins de"+nameType+"a"+distance+"distances, que "+this);
+        }
+        else{
+            System.out.println(node1+"et"+this+"on autant de "+nameType+"a"+distance+"distances");
+        }
+    }
+
+    public String nomtype(String type){
+        String nameType = null;
+        if(type=="V"){
+            nameType="ville";
+        }
+        else if(type=="R"){
+            nameType="Restaurant";
+        }
+        else if(type=="L"){
+            nameType="Loisir";
+        }
+        return nameType;
+    }
+
+    public int numberOfType(ArrayList<Node> nodes, String type) {
+        int number =0;
+        for (int i=0;i< nodes.size();i++){
+            if (Objects.equals(nodes.get(i).getType(), type)) {
+                number++;
+            }
+        }
+        return number;
+    }
+
 }
