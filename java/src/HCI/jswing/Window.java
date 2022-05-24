@@ -51,7 +51,7 @@ public class Window {
     }
 
     public static JPanel constrgraphpanel(){
-        JPanel graphPanel = new JPanel();
+        GraphWindow.MyPanel graphPanel = new GraphWindow.MyPanel();
         return graphPanel;
     }
 
