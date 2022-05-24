@@ -1,17 +1,21 @@
 package features;
 
+import HCI.jswing.Window;
 import dataImport.*;
 //import HCI.*;
 
 public class Test {
     public static void main(String[] args) throws Exception {
-        Nodes nodes = CSVReader.extractData();        //put data in Nodes, a HashMap of Nodes and put Edges in ArrayLists in some Nodes
+        Nodes allnodes = CSVReader.extractData();        //put data in Nodes, a HashMap of Nodes and put Edges in ArrayLists in some Nodes
+        System.out.println(allnodes.getNode("Lyon 5")); //search for a Node by name and print it
+        System.out.println( allnodes.getNode("Lyon 5").neighbor(2));
+        Window.constrwindow();
 
 
-        Node depart = nodes.getNode("Lyon 5");
-        Node arrive = nodes.getNode("Lyon 6");
+        Node depart = allnodes.getNode("Lyon 5");
+        Node arrive = allnodes.getNode("Lyon 6");
 
-        Dijkstra test = new Dijkstra(nodes, depart, arrive);
+        Dijkstra test = new Dijkstra(allnodes, depart, arrive);
         test.dijkstra();
 
 

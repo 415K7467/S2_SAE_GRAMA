@@ -1,16 +1,10 @@
 package HCI.jswing;
 
-import org.omg.PortableInterceptor.DISCARDING;
-
 import javax.swing.*;
 import java.awt.*;
 
 
 public class Window {
-    public static void main(String[] args) {
-        constrwindow();
-    }
-
     public static void constrwindow(){
         JFrame window = new JFrame("JFrame");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

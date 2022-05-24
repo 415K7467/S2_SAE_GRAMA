@@ -27,20 +27,14 @@ public class Dijkstra {
     }
 
     //Dijkstra's algorithm
-    public void dijkstra() {
-
-        ArrayList<Node>[][] tab = new ArrayList[39][1];
-        int i = 0;
+    public ArrayList<Node> dijkstra() {
+        /*System.out.println(this.nodeList.size());
+        int i =0;
         for (Object key: nodeList.getNodes().keySet()){
             tab[i][0].add(nodeList.getNode((String) key));
             i++;
-        }
-
-        /*for (Object key: nodeList.getNodes().keySet()){
-            if (startNode.neighbor(1).contains(nodeList.getNode((String) key))) {
-                System.out.println(nodeList.getNode((String) key));
-                System.out.println(nodeList.getNode((String) key).getEdges());
-            }
-        }*/
+       }
+        System.out.println(i);*/
+        return null;
     }
 }
