@@ -52,7 +52,6 @@ public class Window {
 
     public static JPanel constrgraphpanel(){
         JPanel graphPanel = new JPanel();
-        graphPanel.setBackground(Color.red);
         return graphPanel;
     }
 
@@ -61,24 +60,38 @@ public class Window {
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel,BoxLayout.Y_AXIS));
         Dimension space = new Dimension(400,100);
 
-        JMenuItem clear = new JMenuItem("Clear");
-
+        JPanel graphLoadingPane = new JPanel();
         JMenuBar graphLoadingg = new JMenuBar();
         JMenu graphLoading = graphloading();
         graphLoadingg.add(graphLoading);
+        graphLoadingPane.add(graphLoadingg);
 
+        JPanel bestPathPane = new JPanel();
         JMenuBar bestPathh = new JMenuBar();
         JMenu bestPath = bestPath();
-        JMenuItem about = new JMenuItem("About");
         bestPathh.add(bestPath);
+        bestPathPane.add(bestPathh);
 
-        buttonsPanel.add(graphLoadingg);
+        JPanel aboutPane = new JPanel();
+        JMenuItem about = new JMenuItem("About");
+        bestPathh.add(about);
+        aboutPane.add(about);
+
+        JPanel exitPane = new JPanel();
+        JMenuItem exit = exit();
+        exitPane.add(exit);
+
+        JPanel clearPane = new JPanel();
+        JMenuItem clear = new JMenuItem("Clear");
+        clearPane.add(clear);
+
+
         buttonsPanel.add(Box.createRigidArea(space));
-        buttonsPanel.add(bestPathh);
-        buttonsPanel.add(Box.createRigidArea(space));
-        buttonsPanel.add(about);
-        buttonsPanel.add(clear);
-        buttonsPanel.add(exit());
+        buttonsPanel.add(graphLoadingPane);
+        buttonsPanel.add(bestPathPane);
+        buttonsPanel.add(aboutPane);
+        buttonsPanel.add(clearPane);
+        buttonsPanel.add(exitPane);
         return buttonsPanel;
     }
 
