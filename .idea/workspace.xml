@@ -2,29 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7263ea1d-0db2-4b45-a134-e6d9e4a64526" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/java/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/SAE-JAVA.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/HCI/jswing/Window.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/dataImport/CSV.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/dataImport/CSVReader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/dataImport/NodeDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Dijkstra.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Edge.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Node.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Nodes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/HCI/jswing/Window.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/dataImport/CSV.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/dataImport/CSVReader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/features/Dijkstra.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/features/Edge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/features/Node.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/features/Nodes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/src/features/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/S2_SAE_GRAMA.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/S2_SAE_GRAMA.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/HCI/jswing/GraphWindow$MyPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/HCI/jswing/GraphWindow$MyPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/HCI/jswing/GraphWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/HCI/jswing/GraphWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/HCI/jswing/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/HCI/jswing/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/dataImport/CSV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/dataImport/CSV.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/dataImport/CSVReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/dataImport/CSVReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Dijkstra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/features/Dijkstra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/features/Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/features/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Nodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/features/Nodes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/SAE-JAVA/features/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SAE-JAVA/features/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/java/HCI/jswing/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/HCI/jswing/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/java/dataImport/CSV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataImport/CSV.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/java/dataImport/CSVReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/dataImport/CSVReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/java/features/Dijkstra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/features/Dijkstra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/java/features/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/features/Edge.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/java/features/Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/features/Node.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/java/features/Nodes.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/features/Nodes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/out/production/java/features/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/java/features/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/HCI/jswing/GraphWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HCI/jswing/GraphWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/HCI/jswing/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HCI/jswing/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/dataImport/CSV.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataImport/CSV.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/dataImport/CSVReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataImport/CSVReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Dijkstra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Dijkstra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Nodes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Nodes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/java/src/features/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/features/Test.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,21 +50,36 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrateur\OneDrive - etu.univ-lyon1.fr\Documents\S2\SAE\Plein de matières\S2_SAE_GRAMA\src" />
+      <recent name="C:\Users\Administrateur\OneDrive - etu.univ-lyon1.fr\Documents\S2\SAE\Plein de matières\S2_SAE_GRAMA\java" />
+      <recent name="C:\Users\Administrateur\OneDrive - etu.univ-lyon1.fr\Documents\S2\SAE\Plein de matières\S2_SAE_GRAMA" />
+    </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="features.Test" />
       <module name="S2_SAE_GRAMA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="features.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="S2_SAE_GRAMA" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -69,10 +90,24 @@
       <option name="presentableId" value="Default" />
       <updated>1653290203410</updated>
       <workItem from="1653290205146" duration="171000" />
+      <workItem from="1653380269709" duration="380000" />
+      <workItem from="1653380665663" duration="105000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
