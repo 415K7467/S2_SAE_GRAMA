@@ -30,11 +30,7 @@ public class Test {
         Window.constrwindow();
 
 
-
-        /*Dijkstra test = new Dijkstra(allnodes, depart, arrive);
-        test.dijkstra();*/
-
-
-        //depart.compareNodes(arrive,3,"V");
+        Dijkstra test = new Dijkstra(node1, node2);
+        test.dijkstra();
     }
 }

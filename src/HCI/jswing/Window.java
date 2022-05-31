@@ -1,7 +1,13 @@
 package HCI.jswing;
 
+import features.Dijkstra;
+import features.Node;
+import features.Nodes;
+import features.Test;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 
 public class Window {
@@ -98,8 +104,20 @@ public class Window {
     public static JMenu graphloading() {
         JMenu graphLoading = new JMenu("Graph Loading");
         JMenuItem loadFirstNeighboursForOneNode = new JMenuItem("Load First Neighbours For One Node");
+        loadFirstNeighboursForOneNode.addActionListener(loadFirstNeighboursForOneNodeActionListener -> {
+            String nodeName = name(null);
+            neigbours(nodeName,1);
+        });
         JMenuItem loadTwoNeighboursForOneNode = new JMenuItem("Load Two Neighbours For One Node");
+        loadTwoNeighboursForOneNode.addActionListener(loadTwoNeighboursForOneNodeActionListener -> {
+            String nodeName = name(null);
+            neigbours(nodeName,2);
+        });
         JMenuItem loadNNeighboursForOneNode = new JMenuItem("Load N Neighbours For One Node");
+        loadNNeighboursForOneNode.addActionListener(loadNNeighboursForOneNodeActionListener -> {
+            String nodeName = name(null);
+            neigbours(nodeName,0);
+        });
         graphLoading.add(loadFirstNeighboursForOneNode);
         graphLoading.add(loadTwoNeighboursForOneNode);
         graphLoading.add(loadNNeighboursForOneNode);
@@ -109,8 +127,33 @@ public class Window {
     public static JMenu bestPath(){
         JMenu bestPath = new JMenu("Best Path");
         JMenuItem loadGraphWithBestPathbetweenTwoNodes = new JMenuItem("Load Graph With Best Path between Two Nodes");
+        loadGraphWithBestPathbetweenTwoNodes.addActionListener(e->{
+            String startNode = JOptionPane.showInputDialog(name("de départ"));
+            String arrivalNode = JOptionPane.showInputDialog(name("d'arrivée"));
+            if (startNode != null && arrivalNode != null) {
+                new Dijkstra(Test.allnodes.getNode(startNode), Test.allnodes.getNode(arrivalNode));
+            }
+        });
         bestPath.add(loadGraphWithBestPathbetweenTwoNodes);
         return bestPath;
+    }
+
+    private static String name(String add){
+        String name = JOptionPane.showInputDialog("Entrer le nom du noeud");
+        if (add != null) {
+            name = name + add;
+        }
+        return name;
+    }
+
+    private static void neigbours(String name, int distance){
+        if (name != null) {
+            if (distance == 0) {
+                distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
+            }
+            ArrayList<Node> list = Test.allnodes.getNode(name).neighbor(distance);
+            System.out.println(list);
+        }
     }
 
 }

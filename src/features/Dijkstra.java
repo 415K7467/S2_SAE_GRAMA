@@ -4,19 +4,14 @@ import java.util.ArrayList;
 
 public class Dijkstra {
 
-    private Nodes nodeList;
     private Node startNode;
     private Node arrivalNode;
 
-    public Dijkstra(Nodes nodeList, Node startNode, Node arrivalNode) {
-        this.nodeList = nodeList;
+    public Dijkstra(Node startNode, Node arrivalNode) {
         this.startNode = startNode;
         this.arrivalNode = arrivalNode;
     }
 
-    public Nodes getNodeList() {
-        return nodeList;
-    }
 
     public Node getStartNode() {
         return startNode;
