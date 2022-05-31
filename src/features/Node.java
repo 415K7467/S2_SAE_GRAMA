@@ -79,20 +79,22 @@ public class Node {
         ArrayList<Node> neighbors2 = this.neighbor(distance);
         int numberNeighbors1 =numberOfType(neighbors1, type);
         int numberNeighbors2 =numberOfType(neighbors2, type);
+        String compare = "";
         String nameType = nomtype(type);
 
 
         System.out.println(node1+":"+numberNeighbors1);
         System.out.println(this+":"+numberNeighbors2);
         if (numberNeighbors1<numberNeighbors2){
-            System.out.println(node1+"a plus de"+nameType+"a"+distance+"distances, que "+this);
+            compare = " moins ";
         }
         else if (numberNeighbors1>numberNeighbors2){
-            System.out.println(node1+"a moins de"+nameType+"a"+distance+"distances, que "+this);
+            compare = " plus ";
         }
         else{
-            System.out.println(node1+"et"+this+"on autant de "+nameType+"a"+distance+"distances");
+            compare = " autant ";
         }
+        System.out.println(node1.getName()+" a "+compare+" de " +nameType+" a "+distance+" distances que "+this.getName());
     }
 
     public String nomtype(String type){
