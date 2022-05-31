@@ -22,35 +22,27 @@ public class GraphWindow extends JFrame{
             Nodes nodes = Test.allnodes;
             int x = 10;
             int y = 20;
-            double windowWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+
+            Dimension dim = g.getClipBounds().getSize();
+            double windowWidth = dim.width;
 
             for (Object key: nodes.getNodes().keySet()){
                 //System.out.println(nodes.getNode((String) key));
-                switch( (String) (nodes.getNode((String) key)).getType() ) {
-                    case (String) "V":
-                        g.setColor(Color.red);
-                        break;
-
-                    case (String) "L":
-                        g.setColor(Color.green);
-                        break;
-
-                    case (String) "R":
-                        g.setColor(Color.blue);
-                        break;
-                    default:
-                        g.setColor(Color.black);
-                        break;
+                switch ((nodes.getNode((String) key)).getType()) {
+                    case (String) "V" -> g.setColor(Color.red);
+                    case (String) "L" -> g.setColor(Color.green);
+                    case (String) "R" -> g.setColor(Color.blue);
+                    default -> g.setColor(Color.black);
                 }
+                g.fillOval(x, y, 30, 30);
                 g.drawOval(x, y, 30,30);
                 g.drawString((String) key, x, y);
                 x += 150;
-                if (x > windowWidth-149) {
+                if (x > windowWidth-30) {
                     x = 10;
                     y += 100;
                 }
             }
         }
     }
-
 }

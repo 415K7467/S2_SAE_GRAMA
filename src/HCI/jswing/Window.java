@@ -5,7 +5,7 @@ import java.awt.*;
 
 
 public class Window {
-    public static void constrwindow(){
+    public static void constrwindow() {
         JFrame window = new JFrame("JFrame");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);
