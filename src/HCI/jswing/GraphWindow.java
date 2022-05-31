@@ -19,12 +19,7 @@ public class GraphWindow extends JFrame{
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
 
-            Nodes nodes = null;
-            try {
-                nodes = CSVReader.extractData();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            Nodes nodes = Test.allnodes;
             int x = 10;
             int y = 20;
             double windowWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
