@@ -37,14 +37,6 @@ public class Node {
                 '}';
     }
 
-    public String allToString(){
-        return "Node{" +
-                "type='" + type + '\'' +
-                ", name='" + name + '\'' +
-                ", edges=" + edges +
-                '}';
-    }
-
     public ArrayList<Edge> getEdges() {
         return edges;
     }

@@ -20,7 +20,7 @@ public class Window {
         window.setVisible(true);
     }
 
-    public static JMenuBar constrmenubar(){
+    private static JMenuBar constrmenubar(){
         JMenuBar menubar = new JMenuBar();
 
         JMenuItem exit = exit();
@@ -37,7 +37,7 @@ public class Window {
         return menubar;
     }
 
-    public static JPanel constrpanel(){
+    private static JPanel constrpanel(){
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
@@ -50,12 +50,12 @@ public class Window {
         return panel;
     }
 
-    public static JPanel constrgraphpanel(){
+    private static JPanel constrgraphpanel(){
         GraphWindow.MyPanel graphPanel = new GraphWindow.MyPanel();
         return graphPanel;
     }
 
-    public static JPanel constrButtonsPanel(){
+    private static JPanel constrButtonsPanel(){
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel,BoxLayout.Y_AXIS));
         Dimension space = new Dimension(400,100);
@@ -95,13 +95,13 @@ public class Window {
         return buttonsPanel;
     }
 
-    public static JMenuItem exit(){
+    private static JMenuItem exit(){
         JMenuItem exit = new JMenuItem("Exit");
         exit.addActionListener(fermer->System.exit(0));
         return exit;
     }
 
-    public static JMenu graphloading() {
+    private static JMenu graphloading() {
         JMenu graphLoading = new JMenu("Graph Loading");
         JMenuItem loadFirstNeighboursForOneNode = new JMenuItem("Load First Neighbours For One Node");
         loadFirstNeighboursForOneNode.addActionListener(loadFirstNeighboursForOneNodeActionListener -> {
@@ -124,7 +124,7 @@ public class Window {
         return graphLoading;
     }
 
-    public static JMenu bestPath(){
+    private static JMenu bestPath(){
         JMenu bestPath = new JMenu("Best Path");
         JMenuItem loadGraphWithBestPathbetweenTwoNodes = new JMenuItem("Load Graph With Best Path between Two Nodes");
         loadGraphWithBestPathbetweenTwoNodes.addActionListener(e->{

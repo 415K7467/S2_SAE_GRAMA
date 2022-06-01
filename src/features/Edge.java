@@ -32,4 +32,5 @@ public class Edge {
                 ", arriveNode=" + arriveNode +
                 '}';
     }
+
 }
