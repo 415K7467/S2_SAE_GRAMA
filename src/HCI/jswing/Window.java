@@ -7,11 +7,16 @@ import features.Test;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Window {
-    public static void constrwindow() {
+
+    public static void constrwindow() throws IOException {
         JFrame window = new JFrame("JFrame");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -27,17 +32,28 @@ public class Window {
         JMenuItem clear = new JMenuItem("Clear");
         JMenu graphLoading = graphloading();
         JMenu bestPath = bestPath();
-        JMenuItem about = new JMenuItem("About");
 
         menubar.add(exit);
         menubar.add(clear);
         menubar.add(graphLoading);
         menubar.add(bestPath);
-        menubar.add(about);
+        menubar.add(about());
         return menubar;
     }
 
-    private static JPanel constrpanel(){
+    private static JMenuItem about() {
+        JMenuItem about = new  JMenuItem("About");
+        about.addActionListener(aboutAction->{
+            try {
+                Desktop.getDesktop().open(new File("./CahierDesCharges.docx"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        return about;
+    }
+
+    private static JPanel constrpanel() throws IOException {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
@@ -55,7 +71,7 @@ public class Window {
         return graphPanel;
     }
 
-    private static JPanel constrButtonsPanel(){
+    private static JPanel constrButtonsPanel() throws IOException {
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel,BoxLayout.Y_AXIS));
         Dimension space = new Dimension(400,100);
@@ -74,8 +90,8 @@ public class Window {
 
         JPanel aboutPane = new JPanel();
         JMenuItem about = new JMenuItem("About");
-        bestPathh.add(about);
-        aboutPane.add(about);
+        bestPathh.add(about());
+        aboutPane.add(about());
 
         JPanel exitPane = new JPanel();
         JMenuItem exit = exit();
