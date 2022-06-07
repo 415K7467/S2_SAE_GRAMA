@@ -33,14 +33,14 @@ public class Window {
         JPanel graphPanel = constrgraphpanel();
         JPanel buttonsPanel = constrButtonsPanel();
         JPanel constrPanel = constrResult();
-        panel.add(menu,BorderLayout.NORTH);
-        panel.add(graphPanel,BorderLayout.CENTER);
-        panel.add(buttonsPanel,BorderLayout.EAST);
-        panel.add(constrPanel,BorderLayout.SOUTH);
+        panel.add(menu, BorderLayout.NORTH);
+        panel.add(graphPanel, BorderLayout.CENTER);
+        panel.add(buttonsPanel, BorderLayout.EAST);
+        panel.add(constrPanel, BorderLayout.SOUTH);
         return panel;
     }
 
-    private static JMenuBar constrmenubar(){
+    private static JMenuBar constrmenubar() {
         JMenuBar menubar = new JMenuBar();
 
         JMenuItem exit = exit();
@@ -62,8 +62,8 @@ public class Window {
 
     private static JPanel constrButtonsPanel() throws IOException {
         JPanel buttonsPanel = new JPanel();
-        buttonsPanel.setLayout(new BoxLayout(buttonsPanel,BoxLayout.Y_AXIS));
-        Dimension space = new Dimension(400,100);
+        buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.Y_AXIS));
+        Dimension space = new Dimension(400, 100);
 
         JPanel graphLoadingPane = new JPanel();
         JMenuBar graphLoadingg = new JMenuBar();
@@ -115,17 +115,17 @@ public class Window {
         JMenuItem loadFirstNeighboursForOneNode = new JMenuItem("Load First Neighbours For One Node");
         loadFirstNeighboursForOneNode.addActionListener(loadFirstNeighboursForOneNodeActionListener -> {
             String nodeName = name(null);
-            neigbours(nodeName,1);
+            neigbours(nodeName, 1);
         });
         JMenuItem loadTwoNeighboursForOneNode = new JMenuItem("Load Two Neighbours For One Node");
         loadTwoNeighboursForOneNode.addActionListener(loadTwoNeighboursForOneNodeActionListener -> {
             String nodeName = name(null);
-            neigbours(nodeName,2);
+            neigbours(nodeName, 2);
         });
         JMenuItem loadNNeighboursForOneNode = new JMenuItem("Load N Neighbours For One Node");
         loadNNeighboursForOneNode.addActionListener(loadNNeighboursForOneNodeActionListener -> {
             String nodeName = name(null);
-            neigbours(nodeName,0);
+            neigbours(nodeName, 0);
         });
         graphLoading.add(loadFirstNeighboursForOneNode);
         graphLoading.add(loadTwoNeighboursForOneNode);
@@ -133,10 +133,10 @@ public class Window {
         return graphLoading;
     }
 
-    private static JMenu bestPath(){
+    private static JMenu bestPath() {
         JMenu bestPath = new JMenu("Best Path");
         JMenuItem loadGraphWithBestPathbetweenTwoNodes = new JMenuItem("Load Graph With Best Path between Two Nodes");
-        loadGraphWithBestPathbetweenTwoNodes.addActionListener(e->{
+        loadGraphWithBestPathbetweenTwoNodes.addActionListener(e -> {
             String startNode = name("de départ");
             String arrivalNode = name("d'arrivée");
             if (startNode != null && arrivalNode != null) {
@@ -196,8 +196,8 @@ public class Window {
     }
 
     private static JMenuItem about() {
-        JMenuItem about = new  JMenuItem("About");
-        about.addActionListener(aboutAction->{
+        JMenuItem about = new JMenuItem("About");
+        about.addActionListener(aboutAction -> {
             try {
                 Desktop.getDesktop().open(new File("./CahierDesCharges.docx"));
             } catch (IOException e) {
@@ -207,42 +207,32 @@ public class Window {
         return about;
     }
 
-    private static JMenuItem exit(){
+    private static JMenuItem exit() {
         JMenuItem exit = new JMenuItem("Exit");
-        exit.addActionListener(fermer->System.exit(0));
+        exit.addActionListener(fermer -> System.exit(0));
         return exit;
     }
 
 
-
-    private static String name(String add){
+    private static String name(String add) {
         String name;
         if (add != null) {
-            name = JOptionPane.showInputDialog("Entrer le nom du noeud "+add);
-        }
-        else {
+            name = JOptionPane.showInputDialog("Entrer le nom du noeud " + add);
+        } else {
             name = JOptionPane.showInputDialog("Entrer le nom du noeud ");
         }
         return name;
     }
 
-    private static void neigbours(String name, int distance){
+    private static void neigbours(String name, int distance) {
         if (name != null) {
             if (distance == 0) {
                 distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
             }
-            //ArrayList<Node> list = Test.allnodes.getNode(name).neighbor(distance);
-            ArrayList<String> list = Test.allnodes.getNode(name).neighborName(distance);
-            nameResult.setText("Liste des noeuds voisins de "+name+" pour une distance de "+distance+" :");
-            String text = "";
-            if (list.size()<100)
-                result.setText(list.toString());
-            else if (list.size() <200) {
+            ArrayList<Node> list = Test.allnodes.getNode(name).neighbor(distance);
+            nameResult.setText("Liste des noeuds voisins de " + name + " pour une distance de " + distance + " :");
+            result.setText(list.toString());
                 result.setText(list.toString().substring(0,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
-            }
-            else {
-                result.setText(list.toString().substring(0,list.size()/3)+"\n"+list.toString().substring(list.size()/3,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
-            }
             nameResult.updateUI();
             result.updateUI();
 

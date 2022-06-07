@@ -33,7 +33,7 @@ public class Node {
         return "Node{" +
                 "type='" + type + '\'' +
                 ", name='" + name + '\'' +
-                ", edges=" + getType()+','+getName()+
+                ", edges=" + getType() + ',' + getName() +
                 '}';
     }
 
@@ -45,7 +45,7 @@ public class Node {
         this.edges = edges;
     }
 
-    public void addEdge(Edge edge){
+    public void addEdge(Edge edge) {
         this.edges.add(edge);
     }
 
@@ -96,17 +96,15 @@ public class Node {
         //System.out.println(this+":"+numberNeighbors2);
         if (numberNeighbors1<numberNeighbors2){
             compare = " moins ";
-        }
-        else if (numberNeighbors1>numberNeighbors2){
+        } else if (numberNeighbors1 > numberNeighbors2) {
             compare = " plus ";
-        }
-        else{
+        } else {
             compare = " autant ";
         }
         return node1.getName()+" a "+compare+" de " +nameType+" a "+distance+" distances que "+this.getName()+"  ; "+node1.getName()+" en a "+numberNeighbors1+" et "+this.getName()+" en a "+numberNeighbors2+" "+nameType+".";
     }
 
-    public String nomtype(String type){
+    public String nomtype(String type) {
         String nameType = null;
         if(Objects.equals(type, "V")){
             nameType="ville";

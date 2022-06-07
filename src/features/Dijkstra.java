@@ -8,8 +8,8 @@ public class Dijkstra {
     private final Node arrivalNode;
     private int pathdistance;
     private ArrayList<Node> path;
-    private Nodes allNodes= Test.allnodes;
-    private HashMap<String,listNode> allNodesD = new HashMap<String,listNode>();
+    private Nodes allNodes = Test.allnodes;
+    private HashMap<String, listNode> allNodesD = new HashMap<String, listNode>();
     private Node currentNode;
     ArrayList<Node> neighbors;
 
@@ -20,7 +20,7 @@ public class Dijkstra {
         this.path = null;
     }
 
-    private void initializationOfAllNodesD(){
+    private void initializationOfAllNodesD() {
         for (Object node : allNodes.getNodes().values()) {
             Node node1 = (Node) node;
             listNode listNode = new listNode(null, node1, Integer.MAX_VALUE);
@@ -28,9 +28,9 @@ public class Dijkstra {
         }
     }
 
-    private void addDistance(Node minimalNodes){
+    private void addDistance(Node minimalNodes) {
         int distance = allNodesD.get(minimalNodes).getDistance();
-        currentNode=minimalNodes;
+        currentNode = minimalNodes;
     }
 
     public void fonctionDijkstra() {
@@ -46,30 +46,31 @@ public class Dijkstra {
         }
     }
 
-    private String minimalNode(){
-        Node node1=null;
-        for(Object node : allNodes.getNodes().values()) {
-            if (node1==null||allNodesD.get(node).getDistance()<allNodesD.get(node1).getDistance()){
-                node1=(Node) node;
+    private String minimalNode() {
+        Node node1 = null;
+        for (Object node : allNodes.getNodes().values()) {
+            if (node1 == null || allNodesD.get(node).getDistance() < allNodesD.get(node1).getDistance()) {
+                node1 = (Node) node;
             }
         }
         return node1.getName();
     }
 
-    private void deleteNodes(Node node){
+    private void deleteNodes(Node node) {
         allNodesD.remove(node);
     }
 
-    private void neighborsDijsktra(Node node){
+    private void neighborsDijsktra(Node node) {
         for (int i = 0; i < node.getEdges().size(); i++) {
             Node neighbor1 = node.getEdges().get(i).getArriveNode();
-            if((allNodesD.get(neighbor1).getDistance()> allNodesD.get(node).getDistance()+(int)(node.getEdges().get(i).getSize()))){
+            if ((allNodesD.get(neighbor1).getDistance() > allNodesD.get(node).getDistance() + (int) (node.getEdges().get(i).getSize()))) {
                 deleteNodes(neighbor1);
-                allNodesD.put(neighbor1.getName(), new listNode(node, neighbor1, allNodesD.get(node).getDistance()+(int)(node.getEdges().get(i).getSize())));                        ;
+                allNodesD.put(neighbor1.getName(), new listNode(node, neighbor1, allNodesD.get(node).getDistance() + (int) (node.getEdges().get(i).getSize())));
+                ;
             }
         }
-        System.out.println("pour le trajet de "+this.startNode.getName()+" a "+this.arrivalNode.getName()+" est d'une longueur de: "+this.pathdistance);
-        System.out.println("le chemin est : "+this.path);
+        System.out.println("pour le trajet de " + this.startNode.getName() + " a " + this.arrivalNode.getName() + " est d'une longueur de: " + this.pathdistance);
+        System.out.println("le chemin est : " + this.path);
     }
 
 }

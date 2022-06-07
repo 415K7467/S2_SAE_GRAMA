@@ -7,7 +7,7 @@ import java.util.Scanner;
 import features.*;
 
 public class CSVReader {
-    public static Nodes allNodes=new Nodes();
+    public static Nodes allNodes = new Nodes();
 
     public static Nodes extractData() throws Exception {
         Scanner scanner;
@@ -34,7 +34,7 @@ public class CSVReader {
     public static void extractEdges(Scanner scanner) {
         try {
             while (scanner.hasNextLine()) {
-                String thisNode ;
+                String thisNode;
                 scanner.useDelimiter("[,:]");
                 scanner.next();
                 thisNode = scanner.next();
@@ -42,8 +42,7 @@ public class CSVReader {
                 ArrayList<Edge> edges = extraction(scanner.next());             //create ArrayList of edges for this node
                 allNodes.getNode(thisNode).setEdges(edges);                     //add edges to the node
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("end of file");
         }
 
@@ -59,14 +58,14 @@ public class CSVReader {
             scanner.next();
             scanner.next();
             Node arrivalNode = allNodes.getNode(scanner.next());
-            Edge edge = new Edge(style,weight,arrivalNode);
+            Edge edge = new Edge(style, weight, arrivalNode);
             edges.add(edge);
         }
         return edges;
     }
 
     public static Scanner scannerCSVOfTheBigin(Scanner scanner) throws Exception {
-        if (scanner!=null) {
+        if (scanner != null) {
             scanner.close();
         }
         return new Scanner(new File("src/dataImport/CSV.csv"));

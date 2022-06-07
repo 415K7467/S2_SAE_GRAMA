@@ -26,7 +26,6 @@ public class Test {
         Window.constrwindow();
 
 
-
         //new Dijkstra(node1, node2).searchPathDijkstra();
     }
 }

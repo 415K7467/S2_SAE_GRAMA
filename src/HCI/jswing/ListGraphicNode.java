@@ -8,7 +8,7 @@ public class ListGraphicNode {
     private HashMap ListGraphicNode;
 
     public ListGraphicNode() {
-        ListGraphicNode =  new HashMap<String, GraphicNode>();
+        ListGraphicNode = new HashMap<String, GraphicNode>();
     }
 
     public HashMap getListGraphicNode() {
