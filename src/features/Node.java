@@ -65,7 +65,7 @@ public class Node {
             if (distance > 1) {
                 ArrayList<String> neighbors = neighbor1.neighborName(distance - 1);   //put the list of neighbor of neighbor1 into neighbors
                 for (String s : neighbors) {
-                    if (!neighbor.contains(s)) {  //if the neighbor is not itself and not in neighbor
+                    if (!Objects.equals(s, this.getName()) && !neighbor.contains(s)) {  //if the neighbor is not itself and not in neighbor
                         neighbor.add(s);
                     }
                 }
