@@ -45,6 +45,7 @@ public class Window {
 
         menubar.add(graphLoading);
         menubar.add(bestPath);
+        menubar.add(compare());
         menubar.add(about());
         menubar.add(exit);
         return menubar;
@@ -73,6 +74,14 @@ public class Window {
         bestPathh.add(bestPath);
         bestPathPane.add(bestPathh);
 
+        JPanel comparePane = new JPanel();
+        JMenuBar comparee = new JMenuBar();
+        JMenu compare = compare();
+        comparePane.add(compare);
+        comparee.add(compare);
+        comparePane.add(comparee);
+
+
         JPanel aboutPane = new JPanel();
         JMenuItem about = new JMenuItem("About");
         aboutPane.add(about());
@@ -84,6 +93,7 @@ public class Window {
         buttonsPanel.add(Box.createRigidArea(space));
         buttonsPanel.add(graphLoadingPane);
         buttonsPanel.add(bestPathPane);
+        buttonsPanel.add(comparePane);
         buttonsPanel.add(aboutPane);
         buttonsPanel.add(exitPane);
         return buttonsPanel;
@@ -91,6 +101,7 @@ public class Window {
 
     private static JPanel constrResult(){
         JPanel result=new JPanel();
+        result.setPreferredSize(new Dimension(JFrame.MAXIMIZED_BOTH,150));
         result.add(getNameResult());
         result.add(getResult());
         return result;
@@ -128,15 +139,34 @@ public class Window {
             if (startNode != null && arrivalNode != null) {
                 new Dijkstra(Test.allnodes.getNode(startNode), Test.allnodes.getNode(arrivalNode));
             }
+            nameResult.setText("La fonctionnalité n'est pas encore implémentée");
+            result.setText("");
+            nameResult.updateUI();
+            result.updateUI();
         });
         bestPath.add(loadGraphWithBestPathbetweenTwoNodes);
 
-        nameResult.setText("La fonctionnalité n'est pas encore implémentée");
-        result.setText("");
-        nameResult.updateUI();
-        result.updateUI();
-
         return bestPath;
+    }
+
+    private static JMenu compare(){
+        JMenu compare = new JMenu("Compare");
+        JMenuItem compareVille = new JMenuItem("Compare Ville");
+        compareVille.addActionListener(e->{
+            compareTo("V");
+        });
+        compare.add(compareVille);
+        JMenuItem compareLoisir = new JMenuItem("Compare Loisir");
+        compareLoisir.addActionListener(e->{
+            compareTo("L");
+        });
+        compare.add(compareLoisir);
+        JMenuItem compareRestaurant = new JMenuItem("Compare Restaurant");
+        compareRestaurant.addActionListener(e->{
+            compareTo("R");
+        });
+        compare.add(compareRestaurant);
+        return compare;
     }
 
     private static JMenuItem about() {
@@ -158,6 +188,7 @@ public class Window {
     }
 
 
+
     private static String name(String add){
         String name;
         if (add != null) {
@@ -177,7 +208,15 @@ public class Window {
             //ArrayList<Node> list = Test.allnodes.getNode(name).neighbor(distance);
             ArrayList<String> list = Test.allnodes.getNode(name).neighborName(distance);
             nameResult.setText("Liste des noeuds voisins de "+name+" pour une distance de "+distance+" :");
-            result.setText(list.toString());
+            String text = "";
+            if (list.size()<100)
+                result.setText(list.toString());
+            else if (list.size() <200) {
+                result.setText(list.toString().substring(0,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
+            }
+            else {
+                result.setText(list.toString().substring(0,list.size()/3)+"\n"+list.toString().substring(list.size()/3,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
+            }
             nameResult.updateUI();
             result.updateUI();
 
@@ -192,4 +231,16 @@ public class Window {
     public static JLabel getResult() {
         return result;
     }
+
+    private static void compareTo(String type){
+        String node1 = name("1");
+        String node2 = name("2");
+        int distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
+
+        nameResult.setText("");
+        result.setText(Test.allnodes.getNode(node1).compareNodes(Test.allnodes.getNode(node2),distance,type));
+        nameResult.updateUI();
+        result.updateUI();
+    }
+
 }

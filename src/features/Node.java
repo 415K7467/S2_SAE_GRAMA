@@ -12,7 +12,7 @@ public class Node {
     public Node(String type, String name) {
         this.type = type;
         this.name = name;
-        this.edges = new ArrayList<Edge>();
+        this.edges = new ArrayList<>();
     }
 
     public String getType() {
@@ -50,15 +50,15 @@ public class Node {
     }
 
     public ArrayList<Node> neighbor(int distance) {     // distance coresond to the nomber of edges betweens two nodes
-        ArrayList<Node> neighbor = new ArrayList<Node>();
-        for (int i = 0; i < this.edges.size(); i++){
-            Node neighbor1 = this.edges.get(i).getArriveNode();
+        ArrayList<Node> neighbor = new ArrayList<>();
+        for (Edge edge : this.edges) {
+            Node neighbor1 = edge.getArriveNode();
             neighbor.add(neighbor1);
-            if(distance >1){
-                ArrayList <Node>neighbors = neighbor1.neighbor(distance-1);   //put the list of neighbor of neighbor1 into neighbors
-                for (int k = 0; k < neighbors.size(); k++){
-                    if(neighbors.get(k)!=this && !neighbor.contains(neighbors.get(k))) {  //if the neighbor is not itself and not in neighbor
-                        neighbor.add((Node) neighbors.get(k));
+            if (distance > 1) {
+                ArrayList<Node> neighbors = neighbor1.neighbor(distance - 1);   //put the list of neighbor of neighbor1 into neighbors
+                for (Node node : neighbors) {
+                    if (node != this && !neighbor.contains(node)) {  //if the neighbor is not itself and not in neighbor
+                        neighbor.add(node);
                     }
                 }
             }
@@ -67,15 +67,15 @@ public class Node {
     }
 
     public ArrayList<String> neighborName(int distance) {     // distance correspond to the number of edges between two nodes
-        ArrayList<String> neighbor = new ArrayList<String>();
-        for (int i = 0; i < this.edges.size(); i++){
-            Node neighbor1 = this.edges.get(i).getArriveNode();
+        ArrayList<String> neighbor = new ArrayList<>();
+        for (Edge edge : this.edges) {
+            Node neighbor1 = edge.getArriveNode();
             neighbor.add(neighbor1.getName());
-            if(distance >1){
-                ArrayList <String> neighbors = neighbor1.neighborName(distance-1);   //put the list of neighbor of neighbor1 into neighbors
-                for (int k = 0; k < neighbors.size(); k++){
-                    if(!neighbor.contains(neighbors.get(k))) {  //if the neighbor is not itself and not in neighbor
-                        neighbor.add(neighbors.get(k));
+            if (distance > 1) {
+                ArrayList<String> neighbors = neighbor1.neighborName(distance - 1);   //put the list of neighbor of neighbor1 into neighbors
+                for (String s : neighbors) {
+                    if (!neighbor.contains(s)) {  //if the neighbor is not itself and not in neighbor
+                        neighbor.add(s);
                     }
                 }
             }
@@ -83,17 +83,17 @@ public class Node {
         return neighbor;
     }
 
-    public void compareNodes(Node node1,int distance, String type) { //if type='V' compare with neigbors city, if type='R' compare with neighbor restaurant if type='L' compare with neighbor loisir
+    public String compareNodes(Node node1,int distance, String type) { //if type='V' compare with neigbors city, if type='R' compare with neighbor restaurant if type='L' compare with neighbor loisir
         ArrayList<Node> neighbors1 = node1.neighbor(distance);
         ArrayList<Node> neighbors2 = this.neighbor(distance);
         int numberNeighbors1 =numberOfType(neighbors1, type);
         int numberNeighbors2 =numberOfType(neighbors2, type);
-        String compare = "";
+        String compare;
         String nameType = nomtype(type);
 
 
-        System.out.println(node1+":"+numberNeighbors1);
-        System.out.println(this+":"+numberNeighbors2);
+        //System.out.println(node1+":"+numberNeighbors1);
+        //System.out.println(this+":"+numberNeighbors2);
         if (numberNeighbors1<numberNeighbors2){
             compare = " moins ";
         }
@@ -103,18 +103,18 @@ public class Node {
         else{
             compare = " autant ";
         }
-        System.out.println(node1.getName()+" a "+compare+" de " +nameType+" a "+distance+" distances que "+this.getName());
+        return node1.getName()+" a "+compare+" de " +nameType+" a "+distance+" distances que "+this.getName()+"  ; "+node1.getName()+" en a "+numberNeighbors1+" et "+this.getName()+" en a "+numberNeighbors2+" "+nameType+".";
     }
 
     public String nomtype(String type){
         String nameType = null;
-        if(type=="V"){
+        if(Objects.equals(type, "V")){
             nameType="ville";
         }
-        else if(type=="R"){
+        else if(Objects.equals(type, "R")){
             nameType="Restaurant";
         }
-        else if(type=="L"){
+        else if(Objects.equals(type, "L")){
             nameType="Loisir";
         }
         return nameType;
@@ -122,8 +122,8 @@ public class Node {
 
     public int numberOfType(ArrayList<Node> nodes, String type) {
         int number =0;
-        for (int i=0;i< nodes.size();i++){
-            if (Objects.equals(nodes.get(i).getType(), type)) {
+        for (Node node : nodes) {
+            if (Objects.equals(node.getType(), type)) {
                 number++;
             }
         }
