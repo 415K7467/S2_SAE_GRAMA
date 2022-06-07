@@ -22,7 +22,7 @@ public class Test {
         /*System.out.println(allnodes.getNode("Lyon 5")); //search for a Node by name and print it
         System.out.println( allnodes.getNode("Lyon 5").neighbor(2));
         node1.compareNodes(node2,1,"R");*/
-
+        new Dijkstra(node1,node2).fonctionDijkstra();
         Window.constrwindow();
 
 
