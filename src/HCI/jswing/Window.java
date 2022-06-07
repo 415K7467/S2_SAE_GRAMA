@@ -91,7 +91,6 @@ public class Window {
 
         JPanel aboutPane = new JPanel();
         JMenuItem about = new JMenuItem("About");
-        bestPathh.add(about());
         aboutPane.add(about());
 
         JPanel exitPane = new JPanel();
