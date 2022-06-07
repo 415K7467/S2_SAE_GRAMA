@@ -22,7 +22,9 @@ public class GraphWindow extends JFrame{
             Nodes nodes = Test.allnodes;
             ListGraphicNode listGraphicNode = new ListGraphicNode();
             int x = 10;
-            int y = 20;
+            int y = 50;
+            boolean shiftX = false;
+            boolean shiftY = false;
 
             Dimension dim = g.getClipBounds().getSize();
             double windowWidth = dim.width;
@@ -35,17 +37,31 @@ public class GraphWindow extends JFrame{
                     case (String) "R" -> g.setColor(Color.blue);
                     default -> g.setColor(Color.black);
                 }
+                if (shiftY) {
+                    y += 25;
+                    shiftY = false;
+                }
+                else {
+                    y -= 25;
+                    shiftY = true;
+                }
                 g.fillOval(x, y, 30, 30);
-                g.drawOval(x, y, 30,30);
                 g.drawString((String) key, x, y);
                 listGraphicNode.addGraphicNode(new GraphicNode(nodes.getNode((String) key), x+15, y+15));
+                //System.out.println((x+15) + "," + (y+15));
                 x += 150;
-                if (x > windowWidth-30) {
-                    x = 10;
+                if (x > windowWidth-50) {
                     y += 100;
+                    if (shiftX){
+                        x = 10;
+                        shiftX = false;
+                    }
+                    else {
+                        x = 35;
+                        shiftX = true;
+                    }
                 }
             }
-            g.setColor(Color.black);
 
             int i;
             int startingNode_X;

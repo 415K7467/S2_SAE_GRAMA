@@ -16,10 +16,11 @@ public class CSVReader {
         scanner = scannerCSVOfTheBigin(scanner);
         extractEdges(scanner);
         scanner.close();
+        System.out.println(allNodes);
         return allNodes;
     }
 
-    public static void extractNodes(Scanner scanner) throws Exception {
+    public static void extractNodes(Scanner scanner) {
         scanner.useDelimiter(":");
         while (scanner.hasNext()) {
             Scanner scannerNode = new Scanner(scanner.next());
@@ -30,11 +31,11 @@ public class CSVReader {
         }
     }
 
-    public static void extractEdges(Scanner scanner) throws Exception {
+    public static void extractEdges(Scanner scanner) {
         try {
             while (scanner.hasNextLine()) {
                 String thisNode ;
-                scanner.useDelimiter(",|:");
+                scanner.useDelimiter("[,:]");
                 scanner.next();
                 thisNode = scanner.next();
                 scanner.useDelimiter(";;");
@@ -48,11 +49,11 @@ public class CSVReader {
 
     }
 
-    public static ArrayList<Edge> extraction(String line) throws Exception {
+    public static ArrayList<Edge> extraction(String line) {
         Scanner scanner = new Scanner(line);
         ArrayList<Edge> edges = new ArrayList<>();
         while (scanner.hasNext()) {
-            scanner.useDelimiter(",|:|;");
+            scanner.useDelimiter("[,:;]");
             String style = scanner.next();
             float weight = Float.parseFloat(scanner.next());
             scanner.next();
