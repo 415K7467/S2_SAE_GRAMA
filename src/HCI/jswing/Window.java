@@ -51,6 +51,7 @@ public class Window {
         menubar.add(bestPath);
         menubar.add(compare());
         menubar.add(hideEdge());
+        menubar.add(help());
         menubar.add(about());
         menubar.add(exit);
         return menubar;
@@ -90,7 +91,8 @@ public class Window {
         hideEdgee.add(hideEdge);
         hideEdgePane.add(hideEdgee);
 
-
+        JPanel helpPane = new JPanel();
+        helpPane.add(help());
 
         JPanel aboutPane = new JPanel();
         aboutPane.add(about());
@@ -104,6 +106,7 @@ public class Window {
         buttonsPanel.add(bestPathPane);
         buttonsPanel.add(comparePane);
         buttonsPanel.add(hideEdgePane);
+        buttonsPanel.add(helpPane);
         buttonsPanel.add(aboutPane);
         buttonsPanel.add(exitPane);
         return buttonsPanel;
@@ -196,11 +199,23 @@ public class Window {
         return hide;
     }
 
+    private static JMenuItem help() {
+        JMenuItem help = new JMenuItem("Aide");
+        help.addActionListener(helpAction -> {
+            try {
+                Desktop.getDesktop().open(new File("./ManuelDUtilisation.docx"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        return help;
+    }
+
     private static JMenuItem about() {
         JMenuItem about = new JMenuItem("A propos");
         about.addActionListener(aboutAction -> {
             try {
-                Desktop.getDesktop().open(new File("./CahierDesCharges.docx"));
+                Desktop.getDesktop().open(new File("./readme.md"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
