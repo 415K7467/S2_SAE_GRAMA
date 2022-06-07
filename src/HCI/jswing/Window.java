@@ -11,6 +11,10 @@ import java.util.ArrayList;
 public class Window {
     private static JLabel nameResult= new JLabel("");
     private static JLabel result=new JLabel("");
+    private static GraphWindow.MyPanel graphPanel = new GraphWindow.MyPanel();
+    private static boolean visibleDepartemental=true;
+    private static boolean visibleNational=true;
+    private static boolean visibleAutoroute=true;
 
     public static void constrwindow() throws IOException {
         JFrame window = new JFrame("JFrame");
@@ -52,7 +56,6 @@ public class Window {
     }
 
     private static JPanel constrgraphpanel(){
-        GraphWindow.MyPanel graphPanel = new GraphWindow.MyPanel();
         graphPanel.setBackground(Color.gray);
         return graphPanel;
     }
@@ -169,6 +172,29 @@ public class Window {
         return compare;
     }
 
+    private static JMenu hideEdge() {
+        JMenu hide = new JMenu("Hide");
+        JMenuItem hideDepartemeantal = new JMenuItem("Hide Departemental");
+        hideDepartemeantal.addActionListener(e->{
+            hideTo("D");
+            graphPanel.updateUI();
+        });
+        hide.add(hideDepartemeantal);
+        JMenuItem hideNational = new JMenuItem("Hide National");
+        hideNational.addActionListener(e->{
+            hideTo("N");
+            graphPanel.updateUI();
+        });
+        hide.add(hideNational);
+        JMenuItem hideAutoroute = new JMenuItem("Hide Autoroute");
+        hideAutoroute.addActionListener(e->{
+            hideTo("A");
+            graphPanel.updateUI();
+        });
+        hide.add(hideAutoroute);
+        return hide;
+    }
+
     private static JMenuItem about() {
         JMenuItem about = new  JMenuItem("About");
         about.addActionListener(aboutAction->{
@@ -241,6 +267,22 @@ public class Window {
         result.setText(Test.allnodes.getNode(node1).compareNodes(Test.allnodes.getNode(node2),distance,type));
         nameResult.updateUI();
         result.updateUI();
+    }
+
+    private static void hideTo(String type){
+        switch (type) {
+            case "D":
+                visibleDepartemental = !visibleDepartemental;
+                break;
+            case "N":
+                visibleNational = !visibleNational;
+                break;
+            case "A":
+                visibleAutoroute = !visibleAutoroute;
+                break;
+            default:
+                break;
+        }
     }
 
 }
