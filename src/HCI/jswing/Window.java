@@ -68,6 +68,7 @@ public class Window {
 
     private static JPanel constrgraphpanel(){
         GraphWindow.MyPanel graphPanel = new GraphWindow.MyPanel();
+        graphPanel.setBackground(Color.gray);
         return graphPanel;
     }
 
