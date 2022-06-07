@@ -55,10 +55,27 @@ public class Node {
             Node neighbor1 = this.edges.get(i).getArriveNode();
             neighbor.add(neighbor1);
             if(distance >1){
-                ArrayList neighbors = neighbor1.neighbor(distance-1);   //put the list of neighbor of neighbor1 into neighbors
+                ArrayList <Node>neighbors = neighbor1.neighbor(distance-1);   //put the list of neighbor of neighbor1 into neighbors
                 for (int k = 0; k < neighbors.size(); k++){
                     if(neighbors.get(k)!=this && !neighbor.contains(neighbors.get(k))) {  //if the neighbor is not itself and not in neighbor
                         neighbor.add((Node) neighbors.get(k));
+                    }
+                }
+            }
+        }
+        return neighbor;
+    }
+
+    public ArrayList<String> neighborName(int distance) {     // distance correspond to the number of edges between two nodes
+        ArrayList<String> neighbor = new ArrayList<String>();
+        for (int i = 0; i < this.edges.size(); i++){
+            Node neighbor1 = this.edges.get(i).getArriveNode();
+            neighbor.add(neighbor1.getName());
+            if(distance >1){
+                ArrayList <String> neighbors = neighbor1.neighborName(distance-1);   //put the list of neighbor of neighbor1 into neighbors
+                for (int k = 0; k < neighbors.size(); k++){
+                    if(!neighbor.contains(neighbors.get(k))) {  //if the neighbor is not itself and not in neighbor
+                        neighbor.add(neighbors.get(k));
                     }
                 }
             }

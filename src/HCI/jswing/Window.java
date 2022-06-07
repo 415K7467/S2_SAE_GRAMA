@@ -174,7 +174,8 @@ public class Window {
             if (distance == 0) {
                 distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
             }
-            ArrayList<Node> list = Test.allnodes.getNode(name).neighbor(distance);
+            //ArrayList<Node> list = Test.allnodes.getNode(name).neighbor(distance);
+            ArrayList<String> list = Test.allnodes.getNode(name).neighborName(distance);
             nameResult.setText("Liste des noeuds voisins de "+name+" pour une distance de "+distance+" :");
             result.setText(list.toString());
             nameResult.updateUI();
