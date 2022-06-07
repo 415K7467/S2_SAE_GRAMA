@@ -1,17 +1,12 @@
 package HCI.jswing;
 
-import features.Dijkstra;
-import features.Node;
-import features.Nodes;
-import features.Test;
+import features.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 
 public class Window {
@@ -29,15 +24,13 @@ public class Window {
         JMenuBar menubar = new JMenuBar();
 
         JMenuItem exit = exit();
-        JMenuItem clear = new JMenuItem("Clear");
         JMenu graphLoading = graphloading();
         JMenu bestPath = bestPath();
 
-        menubar.add(exit);
-        menubar.add(clear);
         menubar.add(graphLoading);
         menubar.add(bestPath);
         menubar.add(about());
+        menubar.add(exit);
         return menubar;
     }
 
@@ -97,16 +90,10 @@ public class Window {
         JMenuItem exit = exit();
         exitPane.add(exit);
 
-        JPanel clearPane = new JPanel();
-        JMenuItem clear = new JMenuItem("Clear");
-        clearPane.add(clear);
-
-
         buttonsPanel.add(Box.createRigidArea(space));
         buttonsPanel.add(graphLoadingPane);
         buttonsPanel.add(bestPathPane);
         buttonsPanel.add(aboutPane);
-        buttonsPanel.add(clearPane);
         buttonsPanel.add(exitPane);
         return buttonsPanel;
     }
@@ -144,8 +131,8 @@ public class Window {
         JMenu bestPath = new JMenu("Best Path");
         JMenuItem loadGraphWithBestPathbetweenTwoNodes = new JMenuItem("Load Graph With Best Path between Two Nodes");
         loadGraphWithBestPathbetweenTwoNodes.addActionListener(e->{
-            String startNode = JOptionPane.showInputDialog(name("de départ"));
-            String arrivalNode = JOptionPane.showInputDialog(name("d'arrivée"));
+            String startNode = name("de départ");
+            String arrivalNode = name("d'arrivée");
             if (startNode != null && arrivalNode != null) {
                 new Dijkstra(Test.allnodes.getNode(startNode), Test.allnodes.getNode(arrivalNode));
             }
@@ -155,9 +142,12 @@ public class Window {
     }
 
     private static String name(String add){
-        String name = JOptionPane.showInputDialog("Entrer le nom du noeud");
+        String name;
         if (add != null) {
-            name = name + add;
+            name = JOptionPane.showInputDialog("Entrer le nom du noeud "+add);
+        }
+        else {
+            name = JOptionPane.showInputDialog("Entrer le nom du noeud ");
         }
         return name;
     }
