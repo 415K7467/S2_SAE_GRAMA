@@ -77,25 +77,33 @@ public class GraphWindow extends JFrame {
                     int arrivalNode_X = listGraphicNode.getNode(node.getName()).getX();
                     int arrivalNode_Y = listGraphicNode.getNode(node.getName()).getY();
                     switch (listEdge.get(i).getType()) {
-                        if (Window.visibleAutoroute){
-                            case (String) "A" -> g.setColor(new Color(0,0,255,255));//blue
-                        }
-                        else {
-                            case (String) "A" -> g.setColor(new Color(0,0,255,0));//blue
-                        }
-                        if (Window.visibleNational){
-                            case (String) "N" -> g.setColor(new Color(0,255,0,255));//green
-                        }
-                        else {
-                            case (String) "N" -> g.setColor(new Color(0,255,0,0));//green
-                        }
-                        if (Window.visibleDepartemental){
-                            case (String) "D" -> g.setColor(new Color(255,255,0,0));//yellow
-                        }
-                        else {
-                            case (String) "D" -> g.setColor(new Color(255,255,0,0));//yellow
-                        }
-                        default -> g.setColor(Color.black);
+                        case (String) "A":
+                            if (Window.visibleAutoroute){
+                                g.setColor(new Color(0,0,255,255));//blue
+                            }
+                            else {
+                                g.setColor(new Color(0,0,255,0));//blue
+                            }
+                            break;
+                        case (String) "N":
+                            if (Window.visibleNational){
+                                g.setColor(new Color(0,255,0,255));//green
+                            }
+                            else {
+                                g.setColor(new Color(0,255,0,0));//green
+                            }
+                            break;
+                        case (String) "D":
+                            if (Window.visibleDepartemental){
+                                g.setColor(new Color(255,255,0,255));//yellow
+                            }
+                            else {
+                                g.setColor(new Color(255,255,0,0));//yellow
+                            }
+                            break;
+                        default:
+                            g.setColor(Color.black);
+                            break;
                     }
                     g.drawLine(startingNode_X, startingNode_Y, arrivalNode_X, arrivalNode_Y);
                 }

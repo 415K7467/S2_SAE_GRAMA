@@ -12,9 +12,9 @@ public class Window {
     private static JLabel nameResult= new JLabel("");
     private static JLabel result=new JLabel("");
     private static GraphWindow.MyPanel graphPanel = new GraphWindow.MyPanel();
-    private static boolean visibleDepartemental=true;
-    private static boolean visibleNational=true;
-    private static boolean visibleAutoroute=true;
+    public static boolean visibleDepartemental=true;
+    public static boolean visibleNational=true;
+    public static boolean visibleAutoroute=true;
 
     public static void constrwindow() throws IOException {
         JFrame window = new JFrame("JFrame");
