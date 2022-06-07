@@ -8,8 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
 public class Window {
+    private static JLabel nameResult= new JLabel("");
+    private static JLabel result=new JLabel("");
 
     public static void constrwindow() throws IOException {
         JFrame window = new JFrame("JFrame");
@@ -34,18 +35,6 @@ public class Window {
         return menubar;
     }
 
-    private static JMenuItem about() {
-        JMenuItem about = new  JMenuItem("About");
-        about.addActionListener(aboutAction->{
-            try {
-                Desktop.getDesktop().open(new File("./CahierDesCharges.docx"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        return about;
-    }
-
     private static JPanel constrpanel() throws IOException {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -53,9 +42,11 @@ public class Window {
         JMenuBar menu = constrmenubar();
         JPanel graphPanel = constrgraphpanel();
         JPanel buttonsPanel = constrButtonsPanel();
+        JPanel constrPanel = constrResult();
         panel.add(menu,BorderLayout.NORTH);
         panel.add(graphPanel,BorderLayout.CENTER);
         panel.add(buttonsPanel,BorderLayout.EAST);
+        panel.add(constrPanel,BorderLayout.SOUTH);
         return panel;
     }
 
@@ -98,6 +89,13 @@ public class Window {
         return buttonsPanel;
     }
 
+    private static JPanel constrResult(){
+        JPanel result=new JPanel();
+        result.add(getNameResult());
+        result.add(getResult());
+        return result;
+    }
+
     private static JMenuItem exit(){
         JMenuItem exit = new JMenuItem("Exit");
         exit.addActionListener(fermer->System.exit(0));
@@ -138,6 +136,12 @@ public class Window {
             }
         });
         bestPath.add(loadGraphWithBestPathbetweenTwoNodes);
+
+        nameResult.setText("La fonctionnalité n'est pas encore implémentée");
+        result.setText("");
+        nameResult.updateUI();
+        result.updateUI();
+
         return bestPath;
     }
 
@@ -158,8 +162,41 @@ public class Window {
                 distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
             }
             ArrayList<Node> list = Test.allnodes.getNode(name).neighbor(distance);
+            nameResult.setText("Liste des noeuds voisins de "+name+" pour une distance de "+distance+" :");
+            result.setText(list.toString());
+            nameResult.updateUI();
+            result.updateUI();
+
             System.out.println(list);
         }
+    }
+
+    private static JMenuItem about() {
+        JMenuItem about = new  JMenuItem("About");
+        about.addActionListener(aboutAction->{
+            try {
+                Desktop.getDesktop().open(new File("./CahierDesCharges.docx"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        return about;
+    }
+
+    public static JLabel getNameResult() {
+        return nameResult;
+    }
+
+    public static void setNameResult(JLabel nameResult) {
+        Window.nameResult = nameResult;
+    }
+
+    public static JLabel getResult() {
+        return result;
+    }
+
+    public static void setResult(JLabel result) {
+        Window.result = result;
     }
 
 }
