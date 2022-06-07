@@ -32,9 +32,9 @@ public class GraphWindow extends JFrame {
             Dimension dim = g.getClipBounds().getSize();
             double windowWidth = dim.width;
 
-            for (Object key : nodes.getNodes().keySet()) {
+            for (String key : nodes.getNodes().keySet()) {
                 //System.out.println(nodes.getNode((String) key).getName());
-                switch ((nodes.getNode((String) key)).getType()) {
+                switch ((nodes.getNode(key)).getType()) {
                     case (String) "V" -> g.setColor(new Color(255,0,0,255));//red
                     case (String) "L" -> g.setColor(new Color(0,255,0,255));//green
                     case (String) "R" -> g.setColor(new Color(0,0,255,255));//blue
@@ -48,8 +48,8 @@ public class GraphWindow extends JFrame {
                     shiftY = true;
                 }
                 g.fillOval(x, y, 30, 30);
-                g.drawString((String) key, x, y);
-                listGraphicNode.addGraphicNode(new GraphicNode(nodes.getNode((String) key), x + 15, y + 15));
+                g.drawString(key, x, y);
+                listGraphicNode.addGraphicNode(new GraphicNode(nodes.getNode(key), x + 15, y + 15));
                 //System.out.println((x+15) + "," + (y+15));
                 x += 150;
                 if (x > windowWidth - 50) {
@@ -68,10 +68,10 @@ public class GraphWindow extends JFrame {
             int startingNode_X;
             int startingNode_Y;
             ArrayList<Edge> listEdge;
-            for (Object key : nodes.getNodes().keySet()) {
-                listEdge = listGraphicNode.getNode((nodes.getNode((String) key)).getName()).getNode().getEdges();
-                startingNode_X = listGraphicNode.getNode((nodes.getNode((String) key)).getName()).getX();
-                startingNode_Y = listGraphicNode.getNode((nodes.getNode((String) key)).getName()).getY();
+            for (String key : nodes.getNodes().keySet()) {
+                listEdge = listGraphicNode.getNode((nodes.getNode(key)).getName()).getNode().getEdges();
+                startingNode_X = listGraphicNode.getNode((nodes.getNode(key)).getName()).getX();
+                startingNode_Y = listGraphicNode.getNode((nodes.getNode(key)).getName()).getY();
                 for (i = 0; i < listEdge.size(); i++) {
                     Node node = listEdge.get(i).getArriveNode();
                     int arrivalNode_X = listGraphicNode.getNode(node.getName()).getX();

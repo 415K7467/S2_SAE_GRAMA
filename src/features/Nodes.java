@@ -3,18 +3,14 @@ package features;
 import java.util.HashMap;
 
 public class Nodes {
-    private HashMap nodes;
+    private final HashMap<String, Node> nodes;
 
     public Nodes() {
-        this.nodes = new HashMap<String, Node>();
+        this.nodes = new HashMap<>();
     }
 
-    public HashMap getNodes() {
+    public HashMap<String, Node> getNodes() {
         return nodes;
-    }
-
-    public void setNodes(HashMap nodes) {
-        this.nodes = nodes;
     }
 
     public void addNode(Node node) {
@@ -28,13 +24,8 @@ public class Nodes {
                 '}';
     }
 
-    public int size() {
-        return nodes.size();
-    }
-
     public Node getNode(String name) {
-        return (Node) nodes.get(name);
+        return nodes.get(name);
     }
-
 
 }

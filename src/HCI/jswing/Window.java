@@ -9,15 +9,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Window {
-    private static JLabel nameResult= new JLabel("");
-    private static JLabel result=new JLabel("");
-    private static GraphWindow.MyPanel graphPanel = new GraphWindow.MyPanel();
+    private static final JLabel nameResult= new JLabel("");
+    private static final JLabel result=new JLabel("");
+    private static final GraphWindow.MyPanel graphPanel = new GraphWindow.MyPanel();
     public static boolean visibleDepartemental=true;
     public static boolean visibleNational=true;
     public static boolean visibleAutoroute=true;
 
-    public static void constrwindow() throws IOException {
-        JFrame window = new JFrame("JFrame");
+    public static void constrwindow(){
+        JFrame window = new JFrame("MineGraph");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
@@ -25,7 +25,7 @@ public class Window {
         window.setVisible(true);
     }
 
-    private static JPanel constrpanel() throws IOException {
+    private static JPanel constrpanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
@@ -61,7 +61,7 @@ public class Window {
         return graphPanel;
     }
 
-    private static JPanel constrButtonsPanel() throws IOException {
+    private static JPanel constrButtonsPanel() {
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.Y_AXIS));
         Dimension space = new Dimension(400, 100);
@@ -93,7 +93,6 @@ public class Window {
 
 
         JPanel aboutPane = new JPanel();
-        JMenuItem about = new JMenuItem("About");
         aboutPane.add(about());
 
         JPanel exitPane = new JPanel();
@@ -119,18 +118,18 @@ public class Window {
     }
 
     private static JMenu graphloading() {
-        JMenu graphLoading = new JMenu("Graph Loading");
-        JMenuItem loadFirstNeighboursForOneNode = new JMenuItem("Load First Neighbours For One Node");
+        JMenu graphLoading = new JMenu("Voisins pour un nœud");
+        JMenuItem loadFirstNeighboursForOneNode = new JMenuItem("Voir les voisins pour une distance de 1");
         loadFirstNeighboursForOneNode.addActionListener(loadFirstNeighboursForOneNodeActionListener -> {
             String nodeName = name(null);
             neigbours(nodeName, 1);
         });
-        JMenuItem loadTwoNeighboursForOneNode = new JMenuItem("Load Two Neighbours For One Node");
+        JMenuItem loadTwoNeighboursForOneNode = new JMenuItem("Voir les voisins pour une distance de 2");
         loadTwoNeighboursForOneNode.addActionListener(loadTwoNeighboursForOneNodeActionListener -> {
             String nodeName = name(null);
             neigbours(nodeName, 2);
         });
-        JMenuItem loadNNeighboursForOneNode = new JMenuItem("Load N Neighbours For One Node");
+        JMenuItem loadNNeighboursForOneNode = new JMenuItem("Voir les voisins pour une distance de N");
         loadNNeighboursForOneNode.addActionListener(loadNNeighboursForOneNodeActionListener -> {
             String nodeName = name(null);
             neigbours(nodeName, 0);
@@ -142,8 +141,8 @@ public class Window {
     }
 
     private static JMenu bestPath() {
-        JMenu bestPath = new JMenu("Best Path");
-        JMenuItem loadGraphWithBestPathbetweenTwoNodes = new JMenuItem("Load Graph With Best Path between Two Nodes");
+        JMenu bestPath = new JMenu("Meilleur chemin");
+        JMenuItem loadGraphWithBestPathbetweenTwoNodes = new JMenuItem("Voir le meilleur chemin entre deux noeuds");
         loadGraphWithBestPathbetweenTwoNodes.addActionListener(e -> {
             String startNode = name("de départ");
             String arrivalNode = name("d'arrivée");
@@ -161,40 +160,34 @@ public class Window {
     }
 
     private static JMenu compare(){
-        JMenu compare = new JMenu("Compare");
+        JMenu compare = new JMenu("Comparer deux nœuds");
         JMenuItem compareVille = new JMenuItem("Compare Ville");
-        compareVille.addActionListener(e->{
-            compareTo("V");
-        });
+        compareVille.addActionListener(e-> compareTo("V"));
         compare.add(compareVille);
         JMenuItem compareLoisir = new JMenuItem("Compare Loisir");
-        compareLoisir.addActionListener(e->{
-            compareTo("L");
-        });
+        compareLoisir.addActionListener(e-> compareTo("L"));
         compare.add(compareLoisir);
         JMenuItem compareRestaurant = new JMenuItem("Compare Restaurant");
-        compareRestaurant.addActionListener(e->{
-            compareTo("R");
-        });
+        compareRestaurant.addActionListener(e-> compareTo("R"));
         compare.add(compareRestaurant);
         return compare;
     }
 
     private static JMenu hideEdge() {
-        JMenu hide = new JMenu("Hide");
-        JMenuItem hideDepartemeantal = new JMenuItem("Hide Departemental");
+        JMenu hide = new JMenu("Cacher/Afficher");
+        JMenuItem hideDepartemeantal = new JMenuItem("Cacher/Afficher les Departementales");
         hideDepartemeantal.addActionListener(e->{
             hideTo("D");
             graphPanel.updateUI();
         });
         hide.add(hideDepartemeantal);
-        JMenuItem hideNational = new JMenuItem("Hide National");
+        JMenuItem hideNational = new JMenuItem("Cacher/Afficher les Nationales");
         hideNational.addActionListener(e->{
             hideTo("N");
             graphPanel.updateUI();
         });
         hide.add(hideNational);
-        JMenuItem hideAutoroute = new JMenuItem("Hide Autoroute");
+        JMenuItem hideAutoroute = new JMenuItem("Cacher/Afficher les Autoroutes");
         hideAutoroute.addActionListener(e->{
             hideTo("A");
             graphPanel.updateUI();
@@ -204,7 +197,7 @@ public class Window {
     }
 
     private static JMenuItem about() {
-        JMenuItem about = new JMenuItem("About");
+        JMenuItem about = new JMenuItem("A propos");
         about.addActionListener(aboutAction -> {
             try {
                 Desktop.getDesktop().open(new File("./CahierDesCharges.docx"));
@@ -216,7 +209,7 @@ public class Window {
     }
 
     private static JMenuItem exit() {
-        JMenuItem exit = new JMenuItem("Exit");
+        JMenuItem exit = new JMenuItem("Quitter");
         exit.addActionListener(fermer -> System.exit(0));
         return exit;
     }
@@ -237,7 +230,7 @@ public class Window {
             if (distance == 0) {
                 distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
             }
-            ArrayList<Node> list = Test.allnodes.getNode(name).neighbor(distance);
+            ArrayList<String> list = Test.allnodes.getNode(name).neighborName(distance);
             nameResult.setText("Liste des noeuds voisins de " + name + " pour une distance de " + distance + " :");
             result.setText(list.toString());
                 result.setText(list.toString().substring(0,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
@@ -269,17 +262,11 @@ public class Window {
 
     private static void hideTo(String type){
         switch (type) {
-            case "D":
-                visibleDepartemental = !visibleDepartemental;
-                break;
-            case "N":
-                visibleNational = !visibleNational;
-                break;
-            case "A":
-                visibleAutoroute = !visibleAutoroute;
-                break;
-            default:
-                break;
+            case "D" -> visibleDepartemental = !visibleDepartemental;
+            case "N" -> visibleNational = !visibleNational;
+            case "A" -> visibleAutoroute = !visibleAutoroute;
+            default -> {
+            }
         }
     }
 

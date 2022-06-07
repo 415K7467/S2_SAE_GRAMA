@@ -23,11 +23,6 @@ public class Node {
         return name;
     }
 
-    public ArrayList<Edge> getEd() {
-        return edges;
-    }
-
-
     @Override
     public String toString() {
         return "Node{" +
@@ -43,10 +38,6 @@ public class Node {
 
     public void setEdges(ArrayList<Edge> edges) {
         this.edges = edges;
-    }
-
-    public void addEdge(Edge edge) {
-        this.edges.add(edge);
     }
 
     public ArrayList<Node> neighbor(int distance) {     // distance coresond to the nomber of edges betweens two nodes

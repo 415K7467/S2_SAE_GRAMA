@@ -23,7 +23,7 @@ public class Dijkstra {
     private void initializationOfAllNodesD() {
         for (Object node : allNodes.getNodes().values()) {
             Node node1 = (Node) node;
-            listNode listNode = new listNode(null, node1, Integer.MAX_VALUE);
+            listNode listNode = new listNode(node1, Integer.MAX_VALUE);
             allNodesD.put(node1.getName(), listNode);
         }
     }
@@ -65,7 +65,7 @@ public class Dijkstra {
             Node neighbor1 = node.getEdges().get(i).getArriveNode();
             if ((allNodesD.get(neighbor1).getDistance() > allNodesD.get(node).getDistance() + (int) (node.getEdges().get(i).getSize()))) {
                 deleteNodes(neighbor1);
-                allNodesD.put(neighbor1.getName(), new listNode(node, neighbor1, allNodesD.get(node).getDistance() + (int) (node.getEdges().get(i).getSize())));
+                allNodesD.put(neighbor1.getName(), new listNode(neighbor1, allNodesD.get(node).getDistance() + (int) (node.getEdges().get(i).getSize())));
                 ;
             }
         }

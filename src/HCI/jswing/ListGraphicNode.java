@@ -1,29 +1,20 @@
 package HCI.jswing;
 
-import features.Node;
-
 import java.util.HashMap;
 
 public class ListGraphicNode {
-    private HashMap ListGraphicNode;
+    private final HashMap<String, GraphicNode> ListGraphicNode;
 
     public ListGraphicNode() {
-        ListGraphicNode = new HashMap<String, GraphicNode>();
+        ListGraphicNode = new HashMap<>();
     }
 
-    public HashMap getListGraphicNode() {
-        return ListGraphicNode;
-    }
-
-    public void setListGraphicNode(HashMap listGraphicNode) {
-        ListGraphicNode = listGraphicNode;
-    }
 
     public void addGraphicNode(GraphicNode graphicNode) {
         ListGraphicNode.put(graphicNode.getNode().getName(), graphicNode);
     }
 
     public GraphicNode getNode(String name) {
-        return (GraphicNode) ListGraphicNode.get(name);
+        return ListGraphicNode.get(name);
     }
 }

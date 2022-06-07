@@ -15,9 +15,9 @@ public class Test {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        Node node1 = allnodes.getNode("Lyon 5");
-        Node node2 = allnodes.getNode("Lyon 6");
+    public static void main(String[] args){
+        /*Node node1 = allnodes.getNode("Lyon 5");
+        Node node2 = allnodes.getNode("Lyon 6");*/
 
         /*System.out.println(allnodes.getNode("Lyon 5")); //search for a Node by name and print it
         System.out.println( allnodes.getNode("Lyon 5").neighbor(2));

@@ -5,8 +5,8 @@ import features.Node;
 public class GraphicNode {
 
     private Node node;
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public GraphicNode(Node node, int x, int y) {
         this.node = node;
@@ -26,16 +26,8 @@ public class GraphicNode {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
 }
