@@ -21,20 +21,6 @@ public class Window {
         window.setVisible(true);
     }
 
-    private static JMenuBar constrmenubar(){
-        JMenuBar menubar = new JMenuBar();
-
-        JMenuItem exit = exit();
-        JMenu graphLoading = graphloading();
-        JMenu bestPath = bestPath();
-
-        menubar.add(graphLoading);
-        menubar.add(bestPath);
-        menubar.add(about());
-        menubar.add(exit);
-        return menubar;
-    }
-
     private static JPanel constrpanel() throws IOException {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -48,6 +34,20 @@ public class Window {
         panel.add(buttonsPanel,BorderLayout.EAST);
         panel.add(constrPanel,BorderLayout.SOUTH);
         return panel;
+    }
+
+    private static JMenuBar constrmenubar(){
+        JMenuBar menubar = new JMenuBar();
+
+        JMenuItem exit = exit();
+        JMenu graphLoading = graphloading();
+        JMenu bestPath = bestPath();
+
+        menubar.add(graphLoading);
+        menubar.add(bestPath);
+        menubar.add(about());
+        menubar.add(exit);
+        return menubar;
     }
 
     private static JPanel constrgraphpanel(){
@@ -96,12 +96,6 @@ public class Window {
         return result;
     }
 
-    private static JMenuItem exit(){
-        JMenuItem exit = new JMenuItem("Exit");
-        exit.addActionListener(fermer->System.exit(0));
-        return exit;
-    }
-
     private static JMenu graphloading() {
         JMenu graphLoading = new JMenu("Graph Loading");
         JMenuItem loadFirstNeighboursForOneNode = new JMenuItem("Load First Neighbours For One Node");
@@ -145,6 +139,25 @@ public class Window {
         return bestPath;
     }
 
+    private static JMenuItem about() {
+        JMenuItem about = new  JMenuItem("About");
+        about.addActionListener(aboutAction->{
+            try {
+                Desktop.getDesktop().open(new File("./CahierDesCharges.docx"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        return about;
+    }
+
+    private static JMenuItem exit(){
+        JMenuItem exit = new JMenuItem("Exit");
+        exit.addActionListener(fermer->System.exit(0));
+        return exit;
+    }
+
+
     private static String name(String add){
         String name;
         if (add != null) {
@@ -171,32 +184,11 @@ public class Window {
         }
     }
 
-    private static JMenuItem about() {
-        JMenuItem about = new  JMenuItem("About");
-        about.addActionListener(aboutAction->{
-            try {
-                Desktop.getDesktop().open(new File("./CahierDesCharges.docx"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-        return about;
-    }
-
     public static JLabel getNameResult() {
         return nameResult;
-    }
-
-    public static void setNameResult(JLabel nameResult) {
-        Window.nameResult = nameResult;
     }
 
     public static JLabel getResult() {
         return result;
     }
-
-    public static void setResult(JLabel result) {
-        Window.result = result;
-    }
-
 }
