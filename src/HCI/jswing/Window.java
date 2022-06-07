@@ -50,6 +50,7 @@ public class Window {
         menubar.add(graphLoading);
         menubar.add(bestPath);
         menubar.add(compare());
+        menubar.add(hideEdge());
         menubar.add(about());
         menubar.add(exit);
         return menubar;
@@ -80,9 +81,15 @@ public class Window {
         JPanel comparePane = new JPanel();
         JMenuBar comparee = new JMenuBar();
         JMenu compare = compare();
-        comparePane.add(compare);
         comparee.add(compare);
         comparePane.add(comparee);
+
+        JPanel hideEdgePane = new JPanel();
+        JMenuBar hideEdgee = new JMenuBar();
+        JMenu hideEdge = hideEdge();
+        hideEdgee.add(hideEdge);
+        hideEdgePane.add(hideEdgee);
+
 
 
         JPanel aboutPane = new JPanel();
@@ -97,6 +104,7 @@ public class Window {
         buttonsPanel.add(graphLoadingPane);
         buttonsPanel.add(bestPathPane);
         buttonsPanel.add(comparePane);
+        buttonsPanel.add(hideEdgePane);
         buttonsPanel.add(aboutPane);
         buttonsPanel.add(exitPane);
         return buttonsPanel;
