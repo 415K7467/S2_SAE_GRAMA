@@ -4,47 +4,105 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Dijkstra {
-
-    private Node startNode;
-    private Node arrivalNode;
-    private int distance;
+    private final Node startNode;
+    private final Node arrivalNode;
+    private int pathdistance;
     private ArrayList<Node> path;
+    private Nodes allNodes= Test.allnodes;
+    private HashMap<String,listNode> allNodesD = new HashMap<String,listNode>();
+    private Node currentNode;
+    ArrayList<Node> neighbors;
 
     public Dijkstra(Node startNode, Node arrivalNode) {
         this.startNode = startNode;
         this.arrivalNode = arrivalNode;
-        this.distance = Integer.MAX_VALUE;
+        this.pathdistance = Integer.MAX_VALUE;
         this.path = null;
     }
 
+    private void initializationOfAllNodesD(){
+        for (Object node : allNodes.getNodes().values()) {
+            Node node1 = (Node) node;
+            listNode listNode = new listNode(null, node1, Integer.MAX_VALUE);
+            allNodesD.put(node1.getName(), listNode);
+        }
+    }
+
+    private void addDistance(Node minimalNodes){
+        int distance = allNodesD.get(minimalNodes).getDistance();
+        currentNode=minimalNodes;
+    }
+
+    public void fonctionDijkstra() {
+        String minimalNodeTmp;
+        initializationOfAllNodesD();
+
+        allNodesD.get(startNode).setDistance(0);
+        currentNode = startNode;
+        while (!currentNode.equals(arrivalNode)) {
+            neighborsDijsktra(currentNode);
+            minimalNodeTmp = minimalNode();
+            currentNode = allNodesD.get(minimalNodeTmp).getActualNode();
+        }
+    }
+
+    private String minimalNode(){
+        Node node1=null;
+        for(Object node : allNodes.getNodes().values()) {
+            if (node1==null||allNodesD.get(node).getDistance()<allNodesD.get(node1).getDistance()){
+                node1=(Node) node;
+            }
+        }
+        return node1.getName();
+    }
+
+    private void deleteNodes(Node node){
+        allNodesD.remove(node);
+    }
+
+    private void neighborsDijsktra(Node node){
+        for (int i = 0; i < node.getEdges().size(); i++) {
+            Node neighbor1 = node.getEdges().get(i).getArriveNode();
+            if((allNodesD.get(neighbor1).getDistance()> allNodesD.get(node).getDistance()+(int)(node.getEdges().get(i).getSize()))){
+                deleteNodes(neighbor1);
+                allNodesD.put(neighbor1.getName(), new listNode(node, neighbor1, allNodesD.get(node).getDistance()+(int)(node.getEdges().get(i).getSize())));                        ;
+            }
+        }
+        System.out.println("pour le trajet de "+this.startNode.getName()+" a "+this.arrivalNode.getName()+" est d'une longueur de: "+this.pathdistance);
+        System.out.println("le chemin est : "+this.path);
+    }
+
+}
+
+    /*
+
     public void searchPathDijkstra() {
         Nodes allNodes = Test.allnodes;
-        Node[] currentNode = {null, startNode};
         HashMap<Node, Integer> listLastNode = new HashMap<Node, Integer>();     //listLastNode[currentNode] = distance
         //intialization
         for (Object node : allNodes.getNodes().values()) {
             listLastNode.put((Node) node, Integer.MAX_VALUE);
         }
         listLastNode.put(startNode, 0);
+        Node currentNode = startNode;
         Integer minDistance = listLastNode.get(1);
         //end of initialization
-        while (currentNode[0] != null && arrivalNode != currentNode[0]) {
-            ArrayList<Node> neighborCurrentNode = currentNode[0].neighbor(1);
-            HashMap<Node,Integer> minimal = minimalNeighbor(neighborCurrentNode);
-           //loosness                                                                                       //revoir le relachement
+         while (arrivalNode != currentNode) {
+            ArrayList<Node> neighborCurrentNode = currentNode.neighbor(1);
+            HashMap<Node,Integer> minimal = minimalNeighbor(neighborCurrentNode,distance);
+            //loosness                                                                                       //revoir le relachement
             for (Object node : minimal.keySet()) {
-                if (/**/ 2 /**/ > minDistance+minimal.get(1)) {
+                if ( 2  > minDistance+minimal.get(1)) {
                     listLastNode.put((Node) node, minDistance);
                 }
             }
             //end of loosness
-        }
-        distance = minDistance;
-        System.out.println("distance = " + distance+" path = " + path+"\n");
-
+             distance = minDistance;
+             System.out.println("distance = " + distance+" path = " + path+"\n");
+         }
     }
 
-    public HashMap<Node,Integer> minimalNeighbor(ArrayList<Node> neighborCurrentNode){
+    public HashMap<Node,Integer> minimalNeighbor(ArrayList<Node> neighborCurrentNode,distance){
         Node minimalNode = null;
         int minimalDistance = Integer.MAX_VALUE;
         for (int i = 0; i < neighborCurrentNode.size(); i++) {
@@ -57,7 +115,7 @@ public class Dijkstra {
         theClothest.put(minimalNode, minimalDistance);
         return theClothest ;
     }
-}
+}*/
 /*        while (arrivalNode != currentNode[1]) {
             Node current = currentNode[1];
             for (int i = 0; i < current.getEdges().size(); i++) {
