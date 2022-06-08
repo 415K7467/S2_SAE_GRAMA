@@ -159,7 +159,7 @@ public class Window {
             String startNode = name("de départ");
             String arrivalNode = name("d'arrivée");
             if (startNode != null && arrivalNode != null) {
-                new Dijkstra(Test.allnodes.getNode(startNode), Test.allnodes.getNode(arrivalNode));
+                new Dijkstra(Main.allnodes.getNode(startNode), Main.allnodes.getNode(arrivalNode));
             }
             nameResult.setText("La fonctionnalité n'est pas encore implémentée");
             result.setText("");
@@ -225,7 +225,7 @@ public class Window {
             String node1 = name("1");
             String node2 = name("2");
             if (node1 != null && node2 != null) {
-                ArrayList<String> nodes1List = Test.allnodes.getNode(node1).neighborName(2);
+                ArrayList<String> nodes1List = Main.allnodes.getNode(node1).neighborName(2);
                 if (nodes1List.contains(node2)){
                     nameResult.setText("");
                     result.setText(node1 + " et " + node2 + " sont à 2 distance ou moins");
@@ -286,7 +286,7 @@ public class Window {
             if (distance == 0) {
                 distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
             }
-            ArrayList<String> list = Test.allnodes.getNode(name).neighborName(distance);
+            ArrayList<String> list = Main.allnodes.getNode(name).neighborName(distance);
             nameResult.setText("Liste des noeuds voisins de " + name + " pour une distance de " + distance + " :");
             result.setText(list.toString());
             result.setText(list.toString().substring(0,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
@@ -311,7 +311,7 @@ public class Window {
         int distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
 
         nameResult.setText("");
-        result.setText(Test.allnodes.getNode(node1).compareNodes(Test.allnodes.getNode(node2),distance,type));
+        result.setText(Main.allnodes.getNode(node1).compareNodes(Main.allnodes.getNode(node2),distance,type));
         nameResult.updateUI();
         result.updateUI();
     }

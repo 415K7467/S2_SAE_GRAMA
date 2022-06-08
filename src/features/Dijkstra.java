@@ -8,7 +8,7 @@ public class Dijkstra {
     private final Node arrivalNode;
     private int pathdistance;
     private ArrayList<Node> path;
-    private Nodes allNodes = Test.allnodes;
+    private Nodes allNodes = Main.allnodes;
     private HashMap<String, listNode> allNodesD = new HashMap<String, listNode>();
     private Node currentNode;
     ArrayList<Node> neighbors;

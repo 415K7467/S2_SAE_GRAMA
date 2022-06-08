@@ -22,7 +22,7 @@ public class GraphWindow extends JFrame {
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
 
-            Nodes nodes = Test.allnodes;
+            Nodes nodes = Main.allnodes;
             ListGraphicNode listGraphicNode = new ListGraphicNode();
             int x = 10;
             int y = 50;

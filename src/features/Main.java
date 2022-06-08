@@ -4,7 +4,7 @@ import HCI.jswing.Window;
 import dataImport.*;
 //import java.HCI.*;
 
-public class Test {
+public class Main {
     public static Nodes allnodes;
 
     static {

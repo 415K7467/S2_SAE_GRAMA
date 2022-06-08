@@ -15,6 +15,7 @@ public class Node {
         this.edges = new ArrayList<>();
     }
 
+
     public String getType() {
         return type;
     }
@@ -25,10 +26,15 @@ public class Node {
 
     @Override
     public String toString() {
+        ArrayList<String> edgesString = new ArrayList<>();
+        for (Edge edge : edges) {
+            edgesString.add(edge.getType());
+            edgesString.add(String.valueOf(edge.getSize()));
+        }
         return "Node{" +
-                "type='" + type + '\'' +
-                ", name='" + name + '\'' +
-                ", edges=" + getType() + ',' + getName() +
+                "type=" + type +
+                ", name=" + name  +
+                ", edges=" + edgesString +
                 '}';
     }
 
@@ -119,6 +125,12 @@ public class Node {
         return number;
     }
 
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Node node = (Node) o;
+        return Objects.equals(name, node.name);
+    }
 
 }
