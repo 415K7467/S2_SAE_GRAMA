@@ -51,6 +51,8 @@ public class Window {
         menubar.add(bestPath);
         menubar.add(compare());
         menubar.add(hideEdge());
+        menubar.add(node2distance());
+        menubar.add(info());
         menubar.add(help());
         menubar.add(about());
         menubar.add(exit);
@@ -91,21 +93,28 @@ public class Window {
         hideEdgee.add(hideEdge);
         hideEdgePane.add(hideEdgee);
 
+        JPanel infoPane = new JPanel();
+        infoPane.add(info());
+
         JPanel helpPane = new JPanel();
         helpPane.add(help());
+
+        JPanel distance2 = new JPanel();
+        distance2.add(node2distance());
 
         JPanel aboutPane = new JPanel();
         aboutPane.add(about());
 
         JPanel exitPane = new JPanel();
-        JMenuItem exit = exit();
-        exitPane.add(exit);
+        exitPane.add(exit());
 
         buttonsPanel.add(Box.createRigidArea(space));
         buttonsPanel.add(graphLoadingPane);
         buttonsPanel.add(bestPathPane);
         buttonsPanel.add(comparePane);
         buttonsPanel.add(hideEdgePane);
+        buttonsPanel.add(distance2);
+        buttonsPanel.add(infoPane);
         buttonsPanel.add(helpPane);
         buttonsPanel.add(aboutPane);
         buttonsPanel.add(exitPane);
@@ -199,6 +208,38 @@ public class Window {
         return hide;
     }
 
+    private static JMenuItem info() {
+        JMenuItem info = new JMenuItem("Info");
+        info.addActionListener(infoAction->{
+            nameResult.setText("Il y a 24 Villes, 7 Loisirs, 9 Restaurants pour un total de 40 noeuds   ;");
+            result.setText("Il y a 8 Autoroutes, 7 Nationale, 55 départemental pour un total de 70 noeuds   ;");
+            nameResult.updateUI();
+            result.updateUI();
+        });
+        return info;
+    }
+
+    private static JMenuItem node2distance() {
+        JMenuItem node2distance = new JMenuItem("Est ce que 2 noeuds sont à 2 distance ?");
+            node2distance.addActionListener(e->{
+            String node1 = name("1");
+            String node2 = name("2");
+            if (node1 != null && node2 != null) {
+                ArrayList<String> nodes1List = Test.allnodes.getNode(node1).neighborName(2);
+                if (nodes1List.contains(node2)){
+                    nameResult.setText("");
+                    result.setText(node1 + " et " + node2 + " sont à 2 distance ou moins");
+                }
+                else{
+                    nameResult.setText("");
+                    result.setText(node1 + " et " + node2 + " sont à plus de 2 distance");
+                }
+            }
+        });
+        return node2distance;
+    }
+
+
     private static JMenuItem help() {
         JMenuItem help = new JMenuItem("Aide");
         help.addActionListener(helpAction -> {
@@ -248,7 +289,7 @@ public class Window {
             ArrayList<String> list = Test.allnodes.getNode(name).neighborName(distance);
             nameResult.setText("Liste des noeuds voisins de " + name + " pour une distance de " + distance + " :");
             result.setText(list.toString());
-                result.setText(list.toString().substring(0,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
+            result.setText(list.toString().substring(0,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
             nameResult.updateUI();
             result.updateUI();
 
