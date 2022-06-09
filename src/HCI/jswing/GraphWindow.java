@@ -7,6 +7,13 @@ import java.util.ArrayList;
 import features.*;
 
 public class GraphWindow extends JFrame {
+    public static int numVilles;
+    public static int numLoisirs;
+    public static int numRestaurants;
+    public static int numDepartementales;
+    public static int numNationales;
+    public static int numAutoroutes;
+
     public GraphWindow() {
         super();
         setContentPane(new MyPanel());
@@ -20,6 +27,7 @@ public class GraphWindow extends JFrame {
         }
 
         public void paintComponent(Graphics g) {
+            initializationNum();
             super.paintComponent(g);
 
             Nodes nodes = Main.allnodes;
@@ -33,11 +41,19 @@ public class GraphWindow extends JFrame {
             double windowWidth = dim.width;
 
             for (String key : nodes.getNodes().keySet()) {
-                //System.out.println(nodes.getNode((String) key).getName());
                 switch ((nodes.getNode(key)).getType()) {
-                    case (String) "V" -> g.setColor(new Color(255,0,0,255));//red
-                    case (String) "L" -> g.setColor(new Color(0,255,0,255));//green
-                    case (String) "R" -> g.setColor(new Color(0,0,255,255));//blue
+                    case (String) "V" -> {
+                        g.setColor(new Color(255,0,0,255));//red
+                        numVilles++;
+                    }
+                    case (String) "L" -> {
+                        g.setColor(new Color(0,255,0,255));//green
+                        numLoisirs++;
+                    }
+                    case (String) "R" -> {
+                        g.setColor(new Color(0,0,255,255));//blue
+                        numRestaurants++;
+                    }
                     default -> g.setColor(Color.black);
                 }
                 if (shiftY) {
@@ -50,7 +66,6 @@ public class GraphWindow extends JFrame {
                 g.fillOval(x, y, 30, 30);
                 g.drawString(key, x, y);
                 listGraphicNode.addGraphicNode(new GraphicNode(nodes.getNode(key), x + 15, y + 15));
-                //System.out.println((x+15) + "," + (y+15));
                 x += 150;
                 if (x > windowWidth - 50) {
                     y += 100;
@@ -80,6 +95,7 @@ public class GraphWindow extends JFrame {
                         case (String) "A":
                             if (Window.visibleAutoroute){
                                 g.setColor(new Color(0,0,255,255));//blue
+                                numAutoroutes++;
                             }
                             else {
                                 g.setColor(new Color(0,0,255,0));//blue
@@ -88,6 +104,7 @@ public class GraphWindow extends JFrame {
                         case (String) "N":
                             if (Window.visibleNational){
                                 g.setColor(new Color(0,255,0,255));//green
+                                numNationales++;
                             }
                             else {
                                 g.setColor(new Color(0,255,0,0));//green
@@ -96,6 +113,7 @@ public class GraphWindow extends JFrame {
                         case (String) "D":
                             if (Window.visibleDepartemental){
                                 g.setColor(new Color(255,255,0,255));//yellow
+                                numDepartementales++;
                             }
                             else {
                                 g.setColor(new Color(255,255,0,0));//yellow
@@ -110,4 +128,14 @@ public class GraphWindow extends JFrame {
             }
         }
     }
+
+    public static void initializationNum() {
+        numVilles = 0;
+        numLoisirs = 0;
+        numRestaurants = 0;
+        numDepartementales = 0;
+        numNationales = 0;
+        numAutoroutes = 0;
+    }
+
 }

@@ -211,8 +211,8 @@ public class Window {
     private static JMenuItem info() {
         JMenuItem info = new JMenuItem("Info");
         info.addActionListener(infoAction->{
-            nameResult.setText("Il y a 24 Villes, 7 Loisirs, 9 Restaurants pour un total de 40 noeuds   ;");
-            result.setText("Il y a 8 Autoroutes, 7 Nationale, 55 départemental pour un total de 70 noeuds   ;");
+            nameResult.setText("Il y a "+GraphWindow.numVilles+" Villes, "+GraphWindow.numLoisirs+" Loisirs, "+GraphWindow.numRestaurants+" Restaurants pour un total de "+ (GraphWindow.numVilles + GraphWindow.numLoisirs + GraphWindow.numRestaurants)+" noeuds   ;");
+            result.setText("Il y a "+GraphWindow.numAutoroutes/2+" Autoroutes, "+GraphWindow.numNationales/2+" Nationale, "+GraphWindow.numDepartementales/2+" départemental pour un total de "+(GraphWindow.numAutoroutes/2+GraphWindow.numNationales/2+GraphWindow.numDepartementales/2)+" noeuds   ;");
             nameResult.updateUI();
             result.updateUI();
         });
