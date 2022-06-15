@@ -6,9 +6,17 @@ import java.util.Scanner;
 
 import features.*;
 
+/**
+ * @author Vincent Chavot -- Dambrun
+ */
 public class CSVReader {
     public static Nodes allNodes = new Nodes();
 
+    /**
+     * main of the extraction of the data
+     * @return the list of nodes
+     * @throws Exception if the file is not found (it is not implemented yet)
+     */
     public static Nodes extractData() throws Exception {
         Scanner scanner;
         scanner = scannerCSVOfTheBigin(null);
@@ -20,6 +28,10 @@ public class CSVReader {
         return allNodes;
     }
 
+    /**
+     * @param scanner the scanner of the CSV file
+     * extract nodes from the CSV file
+     */
     public static void extractNodes(Scanner scanner) {
         scanner.useDelimiter(":");
         while (scanner.hasNext()) {
@@ -31,6 +43,10 @@ public class CSVReader {
         }
     }
 
+    /**
+     * @param scanner the scanner of the CSV file
+     * extract edges from the CSV file
+     */
     public static void extractEdges(Scanner scanner) {
         try {
             while (scanner.hasNextLine()) {
@@ -48,6 +64,10 @@ public class CSVReader {
 
     }
 
+    /**
+     * @param line the line of the CSV file
+     * @return the ArrayList of edges for this node (the node is the first element of the line)
+     */
     public static ArrayList<Edge> extraction(String line) {
         Scanner scanner = new Scanner(line);
         ArrayList<Edge> edges = new ArrayList<>();
@@ -64,6 +84,10 @@ public class CSVReader {
         return edges;
     }
 
+    /**
+     * @param scanner the scanner of the CSV file
+     * @return the scanner of the CSV file at the beginning of the file
+     */
     public static Scanner scannerCSVOfTheBigin(Scanner scanner) throws Exception {
         if (scanner != null) {
             scanner.close();

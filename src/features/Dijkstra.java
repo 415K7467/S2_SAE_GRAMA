@@ -3,12 +3,16 @@ package features;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @author Adrien Tacher
+ * @author Vincent Chavot -- Dambrun
+ */
 public class Dijkstra {
     private final Node startNode;
     private final Node arrivalNode;
     private int pathdistance;
     private ArrayList<Node> path;
-    private Nodes allNodes = Test.allnodes;
+    private Nodes allNodes = Main.allnodes;
     private HashMap<String, listNode> allNodesD = new HashMap<String, listNode>();
     private Node currentNode;
     ArrayList<Node> neighbors;

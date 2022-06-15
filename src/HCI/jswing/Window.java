@@ -8,6 +8,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * @author Vincent Chavot -- Dambrun
+ */
 public class Window {
     private static final JLabel nameResult= new JLabel("");
     private static final JLabel result=new JLabel("");
@@ -16,6 +19,9 @@ public class Window {
     public static boolean visibleNational=true;
     public static boolean visibleAutoroute=true;
 
+    /**
+     * main function to start construction of the window
+     */
     public static void constrwindow(){
         JFrame window = new JFrame("MineGraph");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,6 +31,10 @@ public class Window {
         window.setVisible(true);
     }
 
+    /**
+     * function to construct the panel
+     * @return the panel
+     */
     private static JPanel constrpanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
@@ -40,6 +50,10 @@ public class Window {
         return panel;
     }
 
+    /**
+     * function to construct the menu bar
+     * @return the menu bar
+     */
     private static JMenuBar constrmenubar() {
         JMenuBar menubar = new JMenuBar();
 
@@ -51,17 +65,27 @@ public class Window {
         menubar.add(bestPath);
         menubar.add(compare());
         menubar.add(hideEdge());
+        menubar.add(node2distance());
+        menubar.add(info());
         menubar.add(help());
         menubar.add(about());
         menubar.add(exit);
         return menubar;
     }
 
+    /**
+     * function to construct the graph panel
+     * @return the graph panel
+     */
     private static JPanel constrgraphpanel(){
         graphPanel.setBackground(Color.gray);
         return graphPanel;
     }
 
+    /**
+     * function to construct the buttons panel
+     * @return the buttons panel
+     */
     private static JPanel constrButtonsPanel() {
         JPanel buttonsPanel = new JPanel();
         buttonsPanel.setLayout(new BoxLayout(buttonsPanel, BoxLayout.Y_AXIS));
@@ -91,27 +115,38 @@ public class Window {
         hideEdgee.add(hideEdge);
         hideEdgePane.add(hideEdgee);
 
+        JPanel infoPane = new JPanel();
+        infoPane.add(info());
+
         JPanel helpPane = new JPanel();
         helpPane.add(help());
+
+        JPanel distance2 = new JPanel();
+        distance2.add(node2distance());
 
         JPanel aboutPane = new JPanel();
         aboutPane.add(about());
 
         JPanel exitPane = new JPanel();
-        JMenuItem exit = exit();
-        exitPane.add(exit);
+        exitPane.add(exit());
 
         buttonsPanel.add(Box.createRigidArea(space));
         buttonsPanel.add(graphLoadingPane);
         buttonsPanel.add(bestPathPane);
         buttonsPanel.add(comparePane);
         buttonsPanel.add(hideEdgePane);
+        buttonsPanel.add(distance2);
+        buttonsPanel.add(infoPane);
         buttonsPanel.add(helpPane);
         buttonsPanel.add(aboutPane);
         buttonsPanel.add(exitPane);
         return buttonsPanel;
     }
 
+    /**
+     * function to construct the result panel
+     * @return the result panel
+     */
     private static JPanel constrResult(){
         JPanel result=new JPanel();
         result.setPreferredSize(new Dimension(JFrame.MAXIMIZED_BOTH,150));
@@ -120,6 +155,10 @@ public class Window {
         return result;
     }
 
+    /**
+     * function to construct the menu item for loading a graph
+     * @return the menu item
+     */
     private static JMenu graphloading() {
         JMenu graphLoading = new JMenu("Voisins pour un nœud");
         JMenuItem loadFirstNeighboursForOneNode = new JMenuItem("Voir les voisins pour une distance de 1");
@@ -143,6 +182,10 @@ public class Window {
         return graphLoading;
     }
 
+    /**
+     * function to construct the best path menu
+     * @return the menu
+     */
     private static JMenu bestPath() {
         JMenu bestPath = new JMenu("Meilleur chemin");
         JMenuItem loadGraphWithBestPathbetweenTwoNodes = new JMenuItem("Voir le meilleur chemin entre deux noeuds");
@@ -150,7 +193,7 @@ public class Window {
             String startNode = name("de départ");
             String arrivalNode = name("d'arrivée");
             if (startNode != null && arrivalNode != null) {
-                new Dijkstra(Test.allnodes.getNode(startNode), Test.allnodes.getNode(arrivalNode));
+                new Dijkstra(Main.allnodes.getNode(startNode), Main.allnodes.getNode(arrivalNode));
             }
             nameResult.setText("La fonctionnalité n'est pas encore implémentée");
             result.setText("");
@@ -162,6 +205,10 @@ public class Window {
         return bestPath;
     }
 
+    /**
+     * function to construct the menu item for comparing two graphs
+     * @return the menu item
+     */
     private static JMenu compare(){
         JMenu compare = new JMenu("Comparer deux nœuds");
         JMenuItem compareVille = new JMenuItem("Compare Ville");
@@ -176,6 +223,10 @@ public class Window {
         return compare;
     }
 
+    /**
+     * function to construct the menu item for hiding edges
+     * @return the menu item
+     */
     private static JMenu hideEdge() {
         JMenu hide = new JMenu("Cacher/Afficher");
         JMenuItem hideDepartemeantal = new JMenuItem("Cacher/Afficher les Departementales");
@@ -199,6 +250,49 @@ public class Window {
         return hide;
     }
 
+    /**
+     * function to construct the menu item for information about the graph
+     * @return the menu item
+     */
+    private static JMenuItem info() {
+        JMenuItem info = new JMenuItem("Info");
+        info.addActionListener(infoAction->{
+            nameResult.setText("Il y a "+GraphWindow.numVilles+" Villes, "+GraphWindow.numLoisirs+" Loisirs, "+GraphWindow.numRestaurants+" Restaurants pour un total de "+ (GraphWindow.numVilles + GraphWindow.numLoisirs + GraphWindow.numRestaurants)+" noeuds   ;");
+            result.setText("Il y a "+GraphWindow.numAutoroutes/2+" Autoroutes, "+GraphWindow.numNationales/2+" Nationale, "+GraphWindow.numDepartementales/2+" départemental pour un total de "+(GraphWindow.numAutoroutes/2+GraphWindow.numNationales/2+GraphWindow.numDepartementales/2)+" noeuds   ;");
+            nameResult.updateUI();
+            result.updateUI();
+        });
+        return info;
+    }
+
+    /**
+     * function to construct the menu item for node 2distance information
+     * @return the menu item
+     */
+    private static JMenuItem node2distance() {
+        JMenuItem node2distance = new JMenuItem("Est ce que 2 noeuds sont à 2 distance ?");
+            node2distance.addActionListener(e->{
+            String node1 = name("1");
+            String node2 = name("2");
+            if (node1 != null && node2 != null) {
+                ArrayList<String> nodes1List = Main.allnodes.getNode(node1).neighborName(2);
+                if (nodes1List.contains(node2)){
+                    nameResult.setText("");
+                    result.setText(node1 + " et " + node2 + " sont à 2 distance ou moins");
+                }
+                else{
+                    nameResult.setText("");
+                    result.setText(node1 + " et " + node2 + " sont à plus de 2 distance");
+                }
+            }
+        });
+        return node2distance;
+    }
+
+    /**
+     * function to construct the menu item help
+     * @return the menu item
+     */
     private static JMenuItem help() {
         JMenuItem help = new JMenuItem("Aide");
         help.addActionListener(helpAction -> {
@@ -211,6 +305,10 @@ public class Window {
         return help;
     }
 
+    /**
+     * function to construct the menu item about
+     * @return the menu item
+     */
     private static JMenuItem about() {
         JMenuItem about = new JMenuItem("A propos");
         about.addActionListener(aboutAction -> {
@@ -223,6 +321,10 @@ public class Window {
         return about;
     }
 
+    /**
+     * function to construct the menu item for the exit
+     * @return the menu item
+     */
     private static JMenuItem exit() {
         JMenuItem exit = new JMenuItem("Quitter");
         exit.addActionListener(fermer -> System.exit(0));
@@ -230,6 +332,10 @@ public class Window {
     }
 
 
+    /**
+     * function to select a name of a node
+     * @return the menu item
+     */
     private static String name(String add) {
         String name;
         if (add != null) {
@@ -240,15 +346,20 @@ public class Window {
         return name;
     }
 
+    /**
+     * @param name the name of the node
+     * @param distance the distance of the node
+     * print the name neighbours of the node
+     */
     private static void neigbours(String name, int distance) {
         if (name != null) {
             if (distance == 0) {
                 distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
             }
-            ArrayList<String> list = Test.allnodes.getNode(name).neighborName(distance);
+            ArrayList<String> list = Main.allnodes.getNode(name).neighborName(distance);
             nameResult.setText("Liste des noeuds voisins de " + name + " pour une distance de " + distance + " :");
             result.setText(list.toString());
-                result.setText(list.toString().substring(0,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
+            result.setText(list.toString().substring(0,list.size()/2)+"\n"+list.toString().substring(list.size()/2));
             nameResult.updateUI();
             result.updateUI();
 
@@ -256,25 +367,41 @@ public class Window {
         }
     }
 
+    /**
+     * get the nameResult text, nameResult is the text area where the name of result is printed
+     * @return the nameResult text
+     */
     public static JLabel getNameResult() {
         return nameResult;
     }
 
+    /**
+     * get the result text, result is the text area where the result is printed
+     * @return the result text
+     */
     public static JLabel getResult() {
         return result;
     }
 
+    /**
+     * @param type the type of the node
+     * compare number of neighbours of the type between two nodes
+     */
     private static void compareTo(String type){
         String node1 = name("1");
         String node2 = name("2");
         int distance = Integer.parseInt(JOptionPane.showInputDialog("Entrer la distance"));
 
         nameResult.setText("");
-        result.setText(Test.allnodes.getNode(node1).compareNodes(Test.allnodes.getNode(node2),distance,type));
+        result.setText(Main.allnodes.getNode(node1).compareNodes(Main.allnodes.getNode(node2),distance,type));
         nameResult.updateUI();
         result.updateUI();
     }
 
+    /**
+     * @param type the type of hedge
+     * hide or show the hedge of the type
+     */
     private static void hideTo(String type){
         switch (type) {
             case "D" -> visibleDepartemental = !visibleDepartemental;
