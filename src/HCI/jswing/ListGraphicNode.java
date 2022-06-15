@@ -25,7 +25,7 @@ public class ListGraphicNode {
 
     /**
      * @param name the name of the graphic node
-     * return the graphic node
+     * @return the graphic node
      */
     public GraphicNode getNode(String name) {
         return ListGraphicNode.get(name);

@@ -18,19 +18,31 @@ public class GraphWindow extends JFrame {
     public static int numNationales;
     public static int numAutoroutes;
 
-
+    /**
+     * constructor of the GraphWindow and open it
+     */
     public GraphWindow() {
         super();
         setContentPane(new MyPanel());
         setVisible(true);
     }
 
+    /**
+     * panel with the graph
+     */
     static class MyPanel extends JPanel {
+        /**
+         * constructor of the MyPanel
+         */
         public MyPanel() {
             super();
             setBorder(BorderFactory.createLineBorder(Color.black));
         }
 
+        /**
+         * @param g the graphics
+         * paint the graph on the panel
+         */
         public void paintComponent(Graphics g) {
             initializationNum();
             super.paintComponent(g);
@@ -134,6 +146,9 @@ public class GraphWindow extends JFrame {
         }
     }
 
+    /**
+     * initialize the number of each type of node or edge
+     */
     public static void initializationNum() {
         numVilles = 0;
         numLoisirs = 0;
