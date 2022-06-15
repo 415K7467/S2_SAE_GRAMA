@@ -6,7 +6,9 @@ import java.util.HashMap;
 
 import static org.junit.Assert.*;
 
-
+/**
+ * @author Vincent Chavot -- Dambrun
+ */
 public class NodesTest {
     public NodesTest(){
     }

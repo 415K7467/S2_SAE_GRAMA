@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 import features.*;
 
+/**
+ * @author Adrien Tacher
+ * @author Vincent Chavot -- Dambrun
+ */
 public class GraphWindow extends JFrame {
     public static int numVilles;
     public static int numLoisirs;
@@ -13,6 +17,7 @@ public class GraphWindow extends JFrame {
     public static int numDepartementales;
     public static int numNationales;
     public static int numAutoroutes;
+
 
     public GraphWindow() {
         super();

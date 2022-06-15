@@ -3,6 +3,10 @@ package features;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @author Adrien Tacher
+ * @author Vincent Chavot -- Dambrun
+ */
 public class Dijkstra {
     private final Node startNode;
     private final Node arrivalNode;

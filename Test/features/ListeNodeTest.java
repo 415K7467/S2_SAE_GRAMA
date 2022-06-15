@@ -3,6 +3,9 @@ import org.junit.*;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author Vincent Chavot -- Dambrun
+ */
 public class ListeNodeTest {
     public ListeNodeTest() {
     }

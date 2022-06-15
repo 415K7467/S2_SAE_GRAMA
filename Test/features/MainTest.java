@@ -2,6 +2,9 @@ package features;
 
 import org.junit.*;
 
+/**
+ * @author Vincent Chavot -- Dambrun
+ */
 public class MainTest {
     public MainTest() {
     }

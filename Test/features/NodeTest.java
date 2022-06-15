@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * @author Vincent Chavot -- Dambrun
+ */
 public class NodeTest {
     Node node;
     public NodeTest() {
